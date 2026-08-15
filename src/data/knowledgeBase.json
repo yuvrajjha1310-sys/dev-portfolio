@@ -1,70 +1,173 @@
 {
   "name": "Yuvraj Jha",
-  "titles": ["Java Developer", "Software Developer", "BCA Student"],
+
+  "titles": [
+    "Java Developer",
+    "Software Developer",
+    "BCA Student"
+  ],
+
   "location": "New Delhi, India",
+
   "contact": {
     "email": "yuvrajjha1310@gmail.com",
     "linkedin": "linkedin.com/in/yuvrajhub",
     "github": "github.com/yuvrajjha1310-sys"
   },
-  "summary": "BCA student at GGSIPU with strong fundamentals in Java, C, Data Structures, DBMS, and MySQL. Passionate about software development, problem solving, and analytical thinking. Experienced in building academic projects. Quick learner with the ability to stay consistent and focused until project completion. Seeking internship and software development opportunities to apply technical and logical skills in real-world environments.",
+
+  "summary": "Yuvraj Jha is a BCA student and developer based in New Delhi, India. He has a strong foundation in Java, C, Python, SQL, Data Structures and Algorithms, OOP, DBMS, Operating Systems, MySQL and web technologies. He has built multiple academic and practical software projects and has also completed a 2-month internship at Digital Tatsat. He is interested in software development, problem solving, analytical thinking and building practical systems.",
+
   "education": {
     "degree": "Bachelor of Computer Applications (BCA)",
     "college": "MERI College, GGSIPU",
-    "status": "2nd Year, Semester 4",
+    "status": "2nd Year, Semester 5",
     "expectedGraduation": "2027",
     "cgpa": "7.0 / 10"
   },
+
+  "experience": [
+    {
+      "company": "Digital Tatsat",
+      "type": "Internship",
+      "duration": "2 months",
+      "description": "Completed a 2-month internship at Digital Tatsat."
+    }
+  ],
+
   "skills": {
-    "languages": ["Java", "C", "Python", "SQL", "HTML", "CSS", "JavaScript"],
-    "concepts": ["Data Structures & Algorithms", "OOP", "DBMS", "Operating Systems"],
-    "databaseAndTools": ["MySQL", "Git", "GitHub", "VS Code", "MS Excel"],
-    "additional": ["Website Designing", "Data Analysis", "Social Media Management"]
+    "languages": [
+      "Java",
+      "C",
+      "Python",
+      "SQL",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+
+    "concepts": [
+      "Data Structures & Algorithms",
+      "OOP",
+      "DBMS",
+      "Operating Systems"
+    ],
+
+    "databaseAndTools": [
+      "MySQL",
+      "Git",
+      "GitHub",
+      "VS Code",
+      "MS Excel"
+    ],
+
+    "additional": [
+      "Website Designing",
+      "Data Analysis",
+      "Social Media Management"
+    ]
   },
+
   "projects": [
     {
       "name": "Library Management System",
-      "stack": ["Java", "MySQL"],
-      "description": "A system for book issue/return management and record tracking, with database integration for efficient data storage and retrieval. Includes adding, updating, searching, and deleting book records with a structured database workflow."
+      "stack": [
+        "Java",
+        "MySQL"
+      ],
+      "description": "A library management system for managing books, issue and return operations and student records. It includes adding, updating, searching and deleting book records with structured database management."
     },
+
     {
       "name": "Attendance Management System",
-      "stack": ["Java", "MySQL"],
-      "description": "Automates attendance percentage calculation and 75% criteria tracking, with generated attendance reports to reduce manual effort and improve data organization."
+      "stack": [
+        "Java",
+        "MySQL"
+      ],
+      "description": "An attendance management system designed to maintain student attendance records, calculate attendance percentages and track the 75% attendance criterion. It helps reduce manual work and improves attendance record organization."
     },
+
     {
       "name": "Car Rental Management System",
-      "stack": ["Java", "MySQL"],
-      "description": "A rental booking and customer management solution built with OOP principles for maintainable application design."
+      "stack": [
+        "Java",
+        "MySQL"
+      ],
+      "description": "A car rental management system for handling rental bookings and customer information, developed using object-oriented programming principles."
     },
+
     {
       "name": "Radiance Dental Clinic Website",
-      "stack": ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
-      "description": "A full-stack dental clinic website with a public site and an admin panel, built as a college project. TODO(Yuvraj): add a fuller description once it's ready to showcase."
+      "stack": [
+        "PHP",
+        "MySQL",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "description": "A full-stack dental clinic website developed as a college project. It includes a public-facing clinic website and an admin panel, with functionality related to clinic information and appointment management."
     },
+
     {
       "name": "Lumora Interior Designer Website",
-      "stack": [],
-      "description": "TODO(Yuvraj): add stack and description."
+      "stack": [
+        "HTML",
+        "CSS"
+      ],
+      "description": "A premium luxury interior design website created as a frontend project using only HTML and CSS. It uses a black, white and gold visual theme and includes sections such as Home, About, Services, Portfolio, Testimonials, FAQ and Contact."
     },
+
     {
       "name": "Nexus CRM",
       "stack": [],
-      "description": "TODO(Yuvraj): add stack and description."
+      "description": "A CRM project focused on managing customer and business-related workflows."
     },
+
     {
       "name": "Electronics & Gadgets Store Website",
       "stack": [],
-      "description": "TODO(Yuvraj): add stack and description."
+      "description": "A web project focused on an electronics and gadgets store experience."
+    },
+
+    {
+      "name": "Dev Portfolio",
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "JavaScript",
+        "JSX",
+        "CSS",
+        "Vercel"
+      ],
+      "description": "A premium creative developer portfolio designed to present Yuvraj's skills, projects, experience and development journey. The website uses a dark cinematic visual direction with interactive elements, animations, custom cursor interactions and an integrated AI-style portfolio chatbot."
     }
   ],
-  "certifications": ["Python for Data Analysis"],
-  "languagesSpoken": ["English", "Hindi", "Maithili", "Sanskrit"],
+
+  "certifications": [
+    "Python for Data Analysis"
+  ],
+
+  "languagesSpoken": [
+    "English",
+    "Hindi",
+    "Maithili",
+    "Sanskrit"
+  ],
+
   "strengths": [
     "Strong problem-solving and analytical thinking",
     "Dedicated and consistent toward completing assigned tasks",
-    "Fast learner with adaptability to new technologies"
+    "Fast learner with adaptability to new technologies",
+    "Logical thinking",
+    "Research and analytical skills"
   ],
-  "interests": ["Coding", "Typing", "Researching", "Analysing technology and systems"],
-  "careerObjective": "To secure a Software Development Internship where he can apply his technical knowledge, enhance his programming skills, and contribute to real-world projects."
+
+  "interests": [
+    "Coding",
+    "Typing",
+    "Researching",
+    "Analysing technology and systems"
+  ],
+
+  "careerObjective": "To pursue software development opportunities where Yuvraj can apply his programming and problem-solving skills, gain real-world experience and contribute to practical software projects."
 }
