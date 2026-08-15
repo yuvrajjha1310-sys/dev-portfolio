@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Projects from './components/Projects.jsx'
+import Skills from './components/Skills.jsx'
 import Journey from './components/Journey.jsx'
 import Services from './components/Services.jsx'
 import Testimonial from './components/Testimonial.jsx'
@@ -14,17 +15,29 @@ export default function App() {
   return (
     <div className="min-h-screen bg-ink">
       <CustomCursor />
+
       <Navbar />
+
       <main>
         <Hero />
+
         <Projects />
+
+        <Skills />
+
         <Journey />
+
         <Services />
+
         <Testimonial />
+
         <About />
+
         <FAQ />
       </main>
+
       <Contact />
+
       <Chatbot />
     </div>
   )
