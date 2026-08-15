@@ -2,87 +2,184 @@ import { useState } from 'react'
 
 const SERVICES = [
   {
+    number: '01',
     title: 'Frontend Development',
-    description: 'Building interfaces that are fast, accessible, and easy to use.',
+    description:
+      'Building interfaces that are fast, accessible, responsive, and designed to feel as good as they function.',
     tags: ['JavaScript', 'HTML/CSS', 'Responsive'],
   },
   {
+    number: '02',
     title: 'Backend & Databases',
-    description: 'Structured systems underneath — data modeling, queries, and application logic that holds up.',
+    description:
+      'Structured systems underneath — application logic, data modelling, queries, authentication, and database integration.',
     tags: ['Java', 'MySQL', 'SQL'],
   },
 ]
 
-const TOOLS = ['Java', 'JavaScript', 'Python', 'SQL', 'MySQL', 'Git', 'GitHub', 'VS Code']
+const TOOLS = [
+  'Java',
+  'JavaScript',
+  'Python',
+  'SQL',
+  'MySQL',
+  'Git',
+  'GitHub',
+  'VS Code',
+]
 
 export default function Services() {
-  // Card-stack interaction: the active card comes forward in the signal
-  // color, the rest recede/dim. Defaults to the first card at rest, same
-  // as the previous static design.
   const [activeIndex, setActiveIndex] = useState(0)
 
-  return (
-    <section id="services" className="section py-24 sm:py-32">
-      <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
-        <div>
-          <h2 className="font-display text-3xl sm:text-4xl leading-tight">
-            What I help you{' '}
-            <span className="italic text-signal">build.</span>
-          </h2>
+  const handlePointerMove = (event) => {
+    const card = event.currentTarget
+    const rect = card.getBoundingClientRect()
 
-          <p className="mt-6 text-mute max-w-sm">Tools I use</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {TOOLS.map((tool) => (
-              <span
-                key={tool}
-                className="text-xs font-medium text-bone border border-line rounded-lg px-3 py-2"
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
+    const x = event.clientX - rect.left
+    const y = event.clientY - rect.top
+
+    const percentX = (x / rect.width) * 100
+    const percentY = (y / rect.height) * 100
+
+    const rotateY = ((percentX - 50) / 50) * 2.2
+    const rotateX = ((50 - percentY) / 50) * 2.2
+
+    card.style.setProperty('--mouse-x', `${percentX}%`)
+    card.style.setProperty('--mouse-y', `${percentY}%`)
+    card.style.transform = `
+      perspective(1200px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      translateY(-4px)
+      translateZ(0)
+    `
+  }
+
+  const handlePointerLeave = (event) => {
+    const card = event.currentTarget
+
+    card.style.setProperty('--mouse-x', '50%')
+    card.style.setProperty('--mouse-y', '50%')
+    card.style.transform = ''
+  }
+
+  const handleServiceClick = (index) => {
+    setActiveIndex(index)
+
+    const contact = document.getElementById('contact')
+
+    if (contact) {
+      contact.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+  }
+
+  return (
+    <section
+      id="services"
+      className="section services-section py-24 sm:py-32 lg:py-40"
+    >
+      <div className="services-heading">
+        <div>
+          <span className="services-eyebrow">
+            Capabilities / What I build
+          </span>
+
+          <h2 className="services-title">
+            What I help you
+            <br />
+            <em>build.</em>
+          </h2>
         </div>
 
-        <div
-          className="space-y-4"
-          onMouseLeave={() => setActiveIndex(0)}
-        >
-          {SERVICES.map((service, i) => {
-            const isActive = i === activeIndex
-            return (
-              <div
-                key={service.title}
-                onMouseEnter={() => setActiveIndex(i)}
-                onClick={() => setActiveIndex(i)}
-                onFocus={() => setActiveIndex(i)}
+        <p className="services-intro">
+          From polished interfaces to structured backend systems — I build
+          practical software while continuing to grow toward production-level
+          development.
+        </p>
+      </div>
+
+      <div className="services-grid">
+        {SERVICES.map((service, index) => {
+          const isActive = index === activeIndex
+
+          return (
+            <div
+              key={service.title}
+              className="service-card-reveal"
+            >
+              <article
+                className={`service-card ${
+                  isActive ? 'service-card--active' : ''
+                }`}
+                data-cursor="link"
                 tabIndex={0}
                 role="button"
                 aria-pressed={isActive}
-                className={`relative rounded-2xl border p-6 cursor-pointer transition-all duration-300 ease-out will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-signal ${
-                  isActive
-                    ? 'bg-signal border-signal text-bone scale-[1.02] shadow-2xl shadow-signal/20 z-10'
-                    : 'bg-panel border-line text-bone opacity-60 scale-[0.98] hover:opacity-80'
-                }`}
+                aria-label={`Discuss ${service.title}`}
+                onMouseEnter={() => setActiveIndex(index)}
+                onFocus={() => setActiveIndex(index)}
+                onClick={() => handleServiceClick(index)}
+                onPointerMove={handlePointerMove}
+                onPointerLeave={handlePointerLeave}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault()
+                    handleServiceClick(index)
+                  }
+                }}
               >
-                <h3 className="font-display text-xl mb-2">{service.title}</h3>
-                <p className={`text-sm mb-4 ${isActive ? 'text-bone/85' : 'text-mute'}`}>
-                  {service.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`text-xs uppercase tracking-wide rounded-full px-2.5 py-1 border ${
-                        isActive ? 'border-bone/40' : 'border-line text-mute'
-                      }`}
-                    >
-                      {tag}
+                <span className="service-card__number">
+                  {service.number}
+                </span>
+
+                <div className="service-card__content">
+                  <div className="service-card__top">
+                    <span className="service-card__label">
+                      {isActive ? 'Selected capability' : 'Capability'}
                     </span>
-                  ))}
+
+                    <span
+                      className="service-card__arrow"
+                      aria-hidden="true"
+                    >
+                      ↗
+                    </span>
+                  </div>
+
+                  <h3>{service.title}</h3>
+
+                  <p>{service.description}</p>
+
+                  <div className="service-card__tags">
+                    {service.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+
+                  <span className="service-card__cta">
+                    Discuss this
+                    <span aria-hidden="true">↗</span>
+                  </span>
                 </div>
-              </div>
-            )
-          })}
+              </article>
+            </div>
+          )
+        })}
+      </div>
+
+      <div className="services-tools">
+        <div className="services-tools__heading">
+          <span>Tools I use</span>
+          <span>{TOOLS.length} tools in the current stack</span>
+        </div>
+
+        <div className="services-tools__list">
+          {TOOLS.map((tool) => (
+            <span key={tool}>{tool}</span>
+          ))}
         </div>
       </div>
     </section>
