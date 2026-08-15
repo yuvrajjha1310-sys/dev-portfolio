@@ -10,9 +10,9 @@ export default function CustomCursor() {
   const [variant, setVariant] = useState('default')
   const [intro, setIntro] = useState(true)
 
-  /* ----------------------------------------------------
-     Detect desktop pointer
-  ---------------------------------------------------- */
+  /* =====================================================
+     DETECT DESKTOP POINTER
+  ====================================================== */
 
   useEffect(() => {
     const canHover = window.matchMedia(
@@ -34,9 +34,9 @@ export default function CustomCursor() {
     }
   }, [])
 
-  /* ----------------------------------------------------
-     Hide native cursor
-  ---------------------------------------------------- */
+  /* =====================================================
+     HIDE NATIVE CURSOR
+  ====================================================== */
 
   useEffect(() => {
     if (!enabled) return
@@ -52,9 +52,9 @@ export default function CustomCursor() {
     }
   }, [enabled])
 
-  /* ----------------------------------------------------
-     Cursor movement
-  ---------------------------------------------------- */
+  /* =====================================================
+     CURSOR MOVEMENT
+  ====================================================== */
 
   useEffect(() => {
     if (!enabled) return
@@ -116,7 +116,7 @@ export default function CustomCursor() {
 
     const animate = () => {
       /* ------------------------------------------------
-         Follow smoothing
+         SMOOTH FOLLOW
       ------------------------------------------------ */
 
       glow.x += (target.x - glow.x) * 0.34
@@ -131,7 +131,7 @@ export default function CustomCursor() {
       velocity *= 0.84
 
       /* ------------------------------------------------
-         Soft glow
+         GLOW
       ------------------------------------------------ */
 
       if (glowRef.current) {
@@ -145,7 +145,7 @@ export default function CustomCursor() {
       }
 
       /* ------------------------------------------------
-         Atmospheric trail
+         TRAIL
       ------------------------------------------------ */
 
       if (trailRef.current) {
@@ -161,7 +161,7 @@ export default function CustomCursor() {
       }
 
       /* ------------------------------------------------
-         Morphing ring
+         RING
       ------------------------------------------------ */
 
       if (ringRef.current) {
@@ -177,9 +177,13 @@ export default function CustomCursor() {
       rafId = requestAnimationFrame(animate)
     }
 
-    window.addEventListener('mousemove', handleMove, {
-      passive: true,
-    })
+    window.addEventListener(
+      'mousemove',
+      handleMove,
+      {
+        passive: true,
+      }
+    )
 
     rafId = requestAnimationFrame(animate)
 
@@ -193,25 +197,35 @@ export default function CustomCursor() {
     }
   }, [enabled])
 
-  /* ----------------------------------------------------
-     Interactive states
-  ---------------------------------------------------- */
+  /* =====================================================
+     INTERACTIVE STATES
+  ====================================================== */
 
   useEffect(() => {
     if (!enabled) return
 
     const handleMouseOver = (event) => {
-      const target = event.target.closest('[data-cursor]')
+      const target = event.target.closest(
+        '[data-cursor]'
+      )
 
       if (!target) return
 
       const cursorType =
         target.getAttribute('data-cursor')
 
+      /* -----------------------------------------------
+         LINK
+      ------------------------------------------------ */
+
       if (cursorType === 'link') {
         setVariant('link')
         return
       }
+
+      /* -----------------------------------------------
+         PROJECT / VIEW
+      ------------------------------------------------ */
 
       if (
         cursorType === 'project' ||
@@ -225,7 +239,9 @@ export default function CustomCursor() {
     }
 
     const handleMouseOut = (event) => {
-      const target = event.target.closest('[data-cursor]')
+      const target = event.target.closest(
+        '[data-cursor]'
+      )
 
       if (!target) return
 
@@ -263,6 +279,10 @@ export default function CustomCursor() {
       )
     }
   }, [enabled])
+
+  /* =====================================================
+     DESKTOP ONLY
+  ====================================================== */
 
   if (!enabled) {
     return null
@@ -303,24 +323,20 @@ export default function CustomCursor() {
         aria-hidden="true"
         className={`
           custom-cursor-ring
+
           ${
             variant === 'link'
               ? 'custom-cursor-ring--link'
               : ''
           }
+
           ${
             variant === 'view'
               ? 'custom-cursor-ring--view'
               : ''
           }
         `}
-      >
-        {variant === 'view' && (
-          <span className="custom-cursor-view-label">
-            VIEW
-          </span>
-        )}
-      </div>
+      />
 
       {/* =================================================
           MORPHING CORE
@@ -331,11 +347,13 @@ export default function CustomCursor() {
         aria-hidden="true"
         className={`
           custom-cursor-core
+
           ${
             variant === 'link'
               ? 'custom-cursor-core--link'
               : ''
           }
+
           ${
             variant === 'view'
               ? 'custom-cursor-core--view'
@@ -344,7 +362,10 @@ export default function CustomCursor() {
         `}
       >
         {variant === 'link' && (
-          <span className="custom-cursor-arrow">
+          <span
+            className="custom-cursor-arrow"
+            aria-hidden="true"
+          >
             ↗
           </span>
         )}

@@ -17,6 +17,7 @@ const PROJECTS = [
       'A full-stack CRM and workforce management platform designed around authentication, role-based access, customers, leads, tasks, employees, attendance and business operations.',
     tags: ['React', 'Node.js', 'Prisma', 'PostgreSQL'],
     type: 'Full Stack',
+    meta: 'Featured',
     href: '#',
     featured: true,
     image: nexusProject,
@@ -30,6 +31,7 @@ const PROJECTS = [
       'An attendance management system focused on attendance tracking, percentage calculation and student-focused academic monitoring.',
     tags: ['React', 'Flask', 'MySQL'],
     type: 'Full Stack',
+    meta: 'Featured',
     href: '#',
     featured: true,
     image: attendxProject,
@@ -43,6 +45,7 @@ const PROJECTS = [
       'A full-stack dental clinic website with a public-facing experience and appointment-focused functionality.',
     tags: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
     type: 'Full Stack',
+    meta: 'Live',
     href: 'https://dental-clinic-qyiy.onrender.com',
     image: dentalProject,
   },
@@ -55,6 +58,7 @@ const PROJECTS = [
       'A premium interior designer website built around luxury visual presentation, services, portfolio work and a refined editorial aesthetic.',
     tags: ['HTML', 'CSS'],
     type: 'Frontend',
+    meta: 'Live',
     href: 'https://lumora-interiors.netlify.app/',
     image: lumoraProject,
   },
@@ -67,6 +71,7 @@ const PROJECTS = [
       'An electronics and industrial technology website presenting products, engineering services, automation and business information.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     type: 'Frontend',
+    meta: 'Live',
     href: 'https://gada-electronics-tau.vercel.app/',
     image: gadaProject,
   },
@@ -79,6 +84,7 @@ const PROJECTS = [
       'A database-driven library management system for handling books, members, issue and return operations, transactions and library records.',
     tags: ['Java', 'MySQL'],
     type: 'Application',
+    meta: 'Java + MySQL',
     href: '#',
     image: libraryProject,
   },
@@ -91,6 +97,7 @@ const PROJECTS = [
       'A rental management application focused on vehicle management, reservations, customers, payments and rental operations.',
     tags: ['Java', 'MySQL'],
     type: 'Application',
+    meta: 'Java + MySQL',
     href: '#',
     image: carRentalProject,
   },
@@ -102,23 +109,27 @@ function ProjectVisual({ project }) {
       aria-hidden="true"
       className="project-visual project-visual--image"
     >
+      {/* Image */}
       <img
         src={project.image}
         alt=""
         className="project-visual__image"
       />
 
+      {/* Cinematic image treatment */}
       <div className="project-visual__image-overlay" />
 
+      {/* Fine texture */}
       <div className="project-visual__noise" />
 
+      {/* Top project index */}
       <div className="project-visual__label">
-        <span>{project.type}</span>
+        <span>{project.number}</span>
       </div>
 
+      {/* Hover arrow — intentionally minimal */}
       <div className="project-visual__view">
-        <span>Open project</span>
-        <span>↗</span>
+        <span aria-hidden="true">↗</span>
       </div>
     </div>
   )
@@ -134,15 +145,45 @@ function ProjectCard({ project }) {
       </div>
 
       <div className="project-card__content">
+        {/* -----------------------------------------------
+            PROJECT META
+        ------------------------------------------------ */}
+
         <div className="project-card__meta">
-          <span>{project.number}</span>
           <span>{project.type}</span>
+
+          <span
+            className={
+              project.meta === 'Live'
+                ? 'project-card__meta-live'
+                : ''
+            }
+          >
+            {project.meta}
+          </span>
         </div>
 
+        {/* -----------------------------------------------
+            PROJECT TITLE
+        ------------------------------------------------ */}
+
         <div className="project-card__main">
-          <h3>{project.name}</h3>
+          <div className="project-card__title-row">
+            <h3>{project.name}</h3>
+
+            <span
+              className="project-card__number"
+              aria-hidden="true"
+            >
+              {project.number}
+            </span>
+          </div>
 
           <p>{project.description}</p>
+
+          {/* ---------------------------------------------
+              TAGS
+          ---------------------------------------------- */}
 
           <div className="project-card__bottom">
             <div className="project-card__tags">
@@ -151,14 +192,12 @@ function ProjectCard({ project }) {
               ))}
             </div>
 
-            {isExternal && (
-              <span
-                className="project-card__arrow"
-                aria-hidden="true"
-              >
-                ↗
-              </span>
-            )}
+            <span
+              className="project-card__arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
           </div>
         </div>
       </div>
@@ -166,14 +205,17 @@ function ProjectCard({ project }) {
   )
 
   /*
-   * Projects without live URLs are intentionally non-clickable.
-   * This prevents href="#" from jumping the page to the top.
+   * Projects without live URLs stay non-clickable.
+   * This prevents accidental # navigation.
    */
+
   if (!isExternal) {
     return (
       <article
         className={`project-card ${
-          project.featured ? 'project-card--featured' : ''
+          project.featured
+            ? 'project-card--featured'
+            : ''
         }`}
         data-cursor="view"
       >
@@ -185,14 +227,17 @@ function ProjectCard({ project }) {
   /*
    * Live projects open in a new tab.
    */
+
   return (
     <a
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
-      data-cursor="link"
+      data-cursor="view"
       className={`project-card ${
-        project.featured ? 'project-card--featured' : ''
+        project.featured
+          ? 'project-card--featured'
+          : ''
       }`}
       aria-label={`Open ${project.name}`}
     >
@@ -207,6 +252,10 @@ export default function Projects() {
       id="work"
       className="section projects-section py-24 sm:py-32 lg:py-40"
     >
+      {/* =====================================================
+          SECTION HEADER
+      ====================================================== */}
+
       <Reveal as="div">
         <div className="projects-heading">
           <div>
@@ -222,12 +271,16 @@ export default function Projects() {
           </div>
 
           <p className="projects-intro">
-            From academic systems to deployed web experiences — a collection
-            of projects where I&apos;ve been learning how to turn ideas into
-            working products.
+            From academic systems to deployed web experiences — a
+            collection of projects where I&apos;ve been learning how
+            to turn ideas into working products.
           </p>
         </div>
       </Reveal>
+
+      {/* =====================================================
+          PROJECT GRID
+      ====================================================== */}
 
       <div className="projects-grid">
         {PROJECTS.map((project, index) => (
@@ -246,9 +299,18 @@ export default function Projects() {
         ))}
       </div>
 
-      <Reveal as="div" delay={PROJECTS.length * 70}>
+      {/* =====================================================
+          FOOTER
+      ====================================================== */}
+
+      <Reveal
+        as="div"
+        delay={PROJECTS.length * 70}
+      >
         <div className="projects-footer">
-          <span>More experiments coming soon</span>
+          <span>
+            More experiments coming soon
+          </span>
 
           <div className="projects-footer__line" />
 
