@@ -1,6 +1,6 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import useMagnetic from '../hooks/useMagnetic.js'
-import yuvrajAvatar from '../assets/yuvraj-3d-avatar-transparent.png'
+import yuvrajAvatar from '../assets/yuvraj-3d-avatar.jpg'
 
 const CYCLE_WORDS = ['ship.', 'scale.', 'learn.']
 const CYCLE_MS = 2200
@@ -9,19 +9,8 @@ export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0)
   const [cycling, setCycling] = useState(true)
 
-  const avatarRef = useRef(null)
-  const avatarLightRef = useRef(null)
-
-  const avatarTarget = useRef({ x: 0, y: 0 })
-  const avatarCurrent = useRef({ x: 0, y: 0 })
-  const animationFrame = useRef(null)
-
   const workRef = useMagnetic(0.3, 12)
   const touchRef = useMagnetic(0.3, 12)
-
-  /* ==========================================================
-     WORD CYCLING
-  ========================================================== */
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
@@ -39,101 +28,6 @@ export default function Hero() {
     return () => clearInterval(id)
   }, [])
 
-  /* ==========================================================
-     AVATAR 3D PARALLAX + LIGHTING
-  ========================================================== */
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches
-
-    const isTouchDevice =
-      window.matchMedia('(hover: none)').matches ||
-      window.matchMedia('(pointer: coarse)').matches
-
-    if (prefersReduced || isTouchDevice) return
-
-    const handleMouseMove = (event) => {
-      const x = event.clientX / window.innerWidth
-      const y = event.clientY / window.innerHeight
-
-      const normalizedX = (x - 0.5) * 2
-      const normalizedY = (y - 0.5) * 2
-
-      avatarTarget.current = {
-        x: normalizedX,
-        y: normalizedY,
-      }
-    }
-
-    const handleMouseLeave = () => {
-      avatarTarget.current = {
-        x: 0,
-        y: 0,
-      }
-    }
-
-    const animate = () => {
-      const current = avatarCurrent.current
-      const target = avatarTarget.current
-
-      current.x += (target.x - current.x) * 0.055
-      current.y += (target.y - current.y) * 0.055
-
-      if (avatarRef.current) {
-        const rotateY = current.x * 5
-        const rotateX = current.y * -4
-        const translateX = current.x * 8
-        const translateY = current.y * 5
-
-        avatarRef.current.style.transform = `
-          translate3d(${translateX}px, ${translateY}px, 0)
-          rotateX(${rotateX}deg)
-          rotateY(${rotateY}deg)
-        `
-      }
-
-      if (avatarLightRef.current) {
-        const lightX = 50 + current.x * 18
-        const lightY = 35 + current.y * 16
-
-        avatarLightRef.current.style.background = `
-          radial-gradient(
-            circle at ${lightX}% ${lightY}%,
-            rgba(255, 244, 232, 0.16) 0%,
-            rgba(238, 232, 223, 0.07) 18%,
-            rgba(184, 156, 152, 0.035) 38%,
-            transparent 68%
-          )
-        `
-      }
-
-      animationFrame.current = requestAnimationFrame(animate)
-    }
-
-    window.addEventListener('mousemove', handleMouseMove, {
-      passive: true,
-    })
-
-    window.addEventListener('mouseleave', handleMouseLeave)
-
-    animationFrame.current = requestAnimationFrame(animate)
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseleave', handleMouseLeave)
-
-      if (animationFrame.current) {
-        cancelAnimationFrame(animationFrame.current)
-      }
-
-      if (avatarRef.current) {
-        avatarRef.current.style.transform = ''
-      }
-    }
-  }, [])
-
   return (
     <section
       id="top"
@@ -142,15 +36,10 @@ export default function Hero() {
         isolate
         min-h-screen
         overflow-hidden
-        px-5
-        pt-32
-        pb-16
-        sm:px-6
-        sm:pt-40
-        sm:pb-20
-        lg:px-0
-        lg:pt-44
-        lg:pb-24
+        pt-36
+        pb-20
+        sm:pt-44
+        sm:pb-24
       "
     >
       {/* =====================================================
@@ -162,22 +51,13 @@ export default function Hero() {
         className="
           pointer-events-none
           absolute
-          right-[-35%]
-          top-[4%]
+          right-[-8%]
+          top-[8%]
           -z-20
-          h-[480px]
-          w-[480px]
+          h-[700px]
+          w-[700px]
           rounded-full
-          blur-[120px]
-          sm:right-[-20%]
-          sm:h-[600px]
-          sm:w-[600px]
-          sm:blur-[145px]
-          lg:right-[-8%]
-          lg:top-[8%]
-          lg:h-[700px]
-          lg:w-[700px]
-          lg:blur-[160px]
+          blur-[160px]
         "
         style={{
           background:
@@ -190,22 +70,13 @@ export default function Hero() {
         className="
           pointer-events-none
           absolute
-          right-[-20%]
-          bottom-[-8%]
+          right-[5%]
+          bottom-[-15%]
           -z-20
-          h-[400px]
-          w-[400px]
+          h-[550px]
+          w-[550px]
           rounded-full
-          blur-[125px]
-          sm:right-[-8%]
-          sm:h-[500px]
-          sm:w-[500px]
-          sm:blur-[150px]
-          lg:right-[5%]
-          lg:bottom-[-15%]
-          lg:h-[550px]
-          lg:w-[550px]
-          lg:blur-[170px]
+          blur-[170px]
         "
         style={{
           background:
@@ -221,10 +92,8 @@ export default function Hero() {
         <div
           className="
             grid
-            min-h-0
+            min-h-[calc(100vh-180px)]
             items-center
-            gap-10
-            lg:min-h-[calc(100vh-180px)]
             lg:grid-cols-[1.02fr_0.98fr]
             lg:gap-4
           "
@@ -234,8 +103,9 @@ export default function Hero() {
           ================================================= */}
 
           <div className="relative z-20">
+
             <div
-              className="mb-6 animate-fade-up sm:mb-8"
+              className="mb-8 animate-fade-up"
               style={{ animationDelay: '0ms' }}
             >
               <p className="eyebrow">
@@ -248,11 +118,11 @@ export default function Hero() {
                 max-w-4xl
                 font-display
                 font-medium
-                text-[clamp(3.25rem,13vw,5.25rem)]
+                text-[12vw]
                 leading-[0.9]
                 tracking-tightest
                 text-[#EEE8DF]
-                sm:text-[clamp(4rem,8vw,5.75rem)]
+                sm:text-[7vw]
                 lg:text-[5.9rem]
                 xl:text-[6.2rem]
                 animate-fade-up
@@ -274,40 +144,44 @@ export default function Hero() {
               </span>
             </h1>
 
+            {/* =================================================
+                UPDATED HERO DESCRIPTION
+            ================================================= */}
+
             <p
               className="
-                mt-6
+                mt-8
                 max-w-[590px]
                 font-body
-                text-sm
+                text-base
                 leading-[1.7]
                 text-[#B8B0A8]
-                sm:mt-8
-                sm:text-base
-                lg:text-lg
+                sm:text-lg
                 animate-fade-up
               "
               style={{ animationDelay: '190ms' }}
             >
-              Turning ideas, coursework and real-world experience into
-              working systems — with a 2-month internship at Digital
-              Tatsat and a growing portfolio of full-stack and frontend
-              projects.
+              Turning ideas, coursework and real-world experience
+              into working systems — and building a portfolio of
+              full-stack and frontend projects.
             </p>
+
+            {/* =================================================
+                ACTIONS
+            ================================================= */}
 
             <div
               className="
-                mt-7
+                mt-9
                 flex
                 flex-wrap
                 items-center
-                gap-3
-                sm:mt-9
-                sm:gap-4
+                gap-4
                 animate-fade-up
               "
               style={{ animationDelay: '280ms' }}
             >
+
               <a
                 ref={workRef}
                 href="#work"
@@ -318,9 +192,9 @@ export default function Hero() {
                   gap-3
                   rounded-full
                   bg-[#EEE8DF]
-                  px-5
+                  px-6
                   py-3
-                  text-xs
+                  text-sm
                   font-medium
                   text-[#0C0C0C]
                   shadow-[0_14px_45px_rgba(0,0,0,0.22)]
@@ -328,13 +202,11 @@ export default function Hero() {
                   duration-500
                   hover:-translate-y-0.5
                   hover:bg-[#B89C98]
-                  sm:px-6
-                  sm:text-sm
                   will-change-transform
                 "
               >
                 View my work
-                <span>→</span>
+                <span aria-hidden="true">→</span>
               </a>
 
               <a
@@ -348,9 +220,9 @@ export default function Hero() {
                   border
                   border-[#B8B0A8]/25
                   bg-[#151515]/50
-                  px-5
+                  px-6
                   py-3
-                  text-xs
+                  text-sm
                   font-medium
                   text-[#EEE8DF]
                   backdrop-blur-xl
@@ -359,50 +231,73 @@ export default function Hero() {
                   hover:-translate-y-0.5
                   hover:border-[#B89C98]/45
                   hover:bg-[#681B24]/10
-                  sm:px-6
-                  sm:text-sm
                   will-change-transform
                 "
               >
                 Let&apos;s work together
               </a>
+
             </div>
 
-            {/* Professional experience / availability */}
+            {/* =================================================
+                CURRENT STATUS
+            ================================================= */}
 
             <div
               className="
-                mt-8
+                mt-7
                 flex
                 flex-wrap
                 items-center
-                gap-x-5
+                gap-x-4
                 gap-y-2
-                text-[9px]
-                uppercase
-                tracking-[0.18em]
-                text-[#77716C]
                 animate-fade-up
-                sm:mt-10
-                sm:text-[10px]
               "
               style={{ animationDelay: '350ms' }}
             >
-              <span className="inline-flex items-center gap-2">
-                <span
-                  className="
-                    h-1.5
-                    w-1.5
-                    rounded-full
-                    bg-[#B89C98]
-                    shadow-[0_0_12px_rgba(184,156,152,0.65)]
-                  "
-                />
+              <span
+                className="
+                  h-1.5
+                  w-1.5
+                  rounded-full
+                  bg-[#B89C98]
+                  shadow-[0_0_12px_rgba(184,156,152,0.65)]
+                "
+                aria-hidden="true"
+              />
+
+              <span
+                className="
+                  text-[10px]
+                  uppercase
+                  tracking-[0.22em]
+                  text-[#7F7974]
+                "
+              >
                 Open to opportunities
               </span>
 
-              <span>2-Month Internship · Digital Tatsat</span>
+              <span
+                className="
+                  text-[#5F5A56]
+                "
+                aria-hidden="true"
+              >
+                ·
+              </span>
+
+              <span
+                className="
+                  text-[10px]
+                  uppercase
+                  tracking-[0.22em]
+                  text-[#7F7974]
+                "
+              >
+                BCA · 5th Semester
+              </span>
             </div>
+
           </div>
 
           {/* =================================================
@@ -412,16 +307,16 @@ export default function Hero() {
           <div
             className="
               relative
-              mt-0
+              mt-8
               flex
-              min-h-[390px]
+              min-h-[500px]
               items-center
               justify-center
-              sm:min-h-[480px]
               lg:mt-0
               lg:min-h-[650px]
             "
           >
+
             {/* Large ambient light */}
 
             <div
@@ -431,18 +326,12 @@ export default function Hero() {
                 absolute
                 left-1/2
                 top-1/2
-                h-[380px]
-                w-[380px]
+                h-[520px]
+                w-[520px]
                 -translate-x-1/2
                 -translate-y-1/2
                 rounded-full
-                blur-[100px]
-                sm:h-[480px]
-                sm:w-[480px]
-                sm:blur-[120px]
-                lg:h-[520px]
-                lg:w-[520px]
-                lg:blur-[130px]
+                blur-[130px]
               "
               style={{
                 background:
@@ -457,20 +346,13 @@ export default function Hero() {
               className="
                 pointer-events-none
                 absolute
-                bottom-[3%]
-                left-1/2
-                h-[240px]
-                w-[280px]
+                bottom-[8%]
+                left-[50%]
+                h-[320px]
+                w-[360px]
                 -translate-x-1/2
                 rounded-full
-                blur-[90px]
-                sm:h-[300px]
-                sm:w-[340px]
-                sm:blur-[105px]
-                lg:bottom-[8%]
-                lg:h-[320px]
-                lg:w-[360px]
-                lg:blur-[110px]
+                blur-[110px]
               "
               style={{
                 background:
@@ -479,77 +361,53 @@ export default function Hero() {
             />
 
             {/* =================================================
-                AVATAR 3D STAGE
+                AVATAR
             ================================================= */}
 
             <div
-              ref={avatarRef}
               className="
                 relative
                 z-10
-                w-[min(88vw,390px)]
-                sm:w-[min(78vw,440px)]
+                w-[390px]
+                sm:w-[440px]
                 lg:w-[500px]
                 xl:w-[540px]
-                will-change-transform
+                animate-[avatarFloat_7s_ease-in-out_infinite]
               "
-              style={{
-                transformStyle: 'preserve-3d',
-                perspective: '1000px',
-              }}
             >
-              <div className="animate-[avatarFloat_7s_ease-in-out_infinite]">
-                <img
-                  src={yuvrajAvatar}
-                  alt="Yuvraj Jha 3D avatar"
-                  draggable="false"
-                  className="
-                    relative
-                    block
-                    w-full
-                    select-none
-                    object-contain
-                    opacity-[0.98]
-                    brightness-[1.03]
-                    contrast-[1.04]
-                    saturate-[0.90]
-                    drop-shadow-[0_30px_70px_rgba(0,0,0,0.55)]
-                    sm:drop-shadow-[0_35px_80px_rgba(0,0,0,0.55)]
-                  "
-                />
 
-                {/* Cursor-reactive light */}
+              <img
+                src={yuvrajAvatar}
+                alt="Yuvraj Jha 3D avatar"
+                draggable="false"
+                className="
+                  relative
+                  block
+                  w-full
+                  select-none
+                  object-contain
+                  mix-blend-screen
+                  opacity-[0.96]
+                  brightness-[1.08]
+                  contrast-[1.08]
+                  saturate-[0.88]
+                  drop-shadow-[0_35px_80px_rgba(0,0,0,0.55)]
+                "
+              />
 
-                <div
-                  ref={avatarLightRef}
-                  aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    transition-opacity
-                    duration-500
-                  "
-                  style={{
-                    background:
-                      'radial-gradient(circle at 50% 35%, rgba(255,244,232,0.10) 0%, rgba(238,232,223,0.045) 18%, rgba(184,156,152,0.025) 38%, transparent 68%)',
-                    mixBlendMode: 'screen',
-                  }}
-                />
+              {/* Soft light over avatar */}
 
-                {/* Static atmospheric lighting */}
+              <div
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  bg-[radial-gradient(ellipse_at_50%_38%,rgba(238,232,223,0.055),transparent_45%),radial-gradient(ellipse_at_55%_72%,rgba(104,27,36,0.07),transparent_62%)]
+                  mix-blend-screen
+                "
+              />
 
-                <div
-                  aria-hidden="true"
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    bg-[radial-gradient(ellipse_at_50%_38%,rgba(238,232,223,0.035),transparent_45%),radial-gradient(ellipse_at_55%_72%,rgba(104,27,36,0.05),transparent_62%)]
-                    mix-blend-screen
-                  "
-                />
-              </div>
             </div>
 
             {/* =================================================
@@ -560,18 +418,13 @@ export default function Hero() {
               aria-hidden="true"
               className="
                 absolute
-                right-[3%]
-                top-[14%]
-                h-1.5
-                w-1.5
+                right-[8%]
+                top-[17%]
+                h-2
+                w-2
                 rounded-full
-                bg-[#B89C98]/60
-                shadow-[0_0_18px_rgba(184,156,152,0.6)]
-                sm:right-[8%]
-                sm:top-[17%]
-                sm:h-2
-                sm:w-2
-                sm:shadow-[0_0_24px_rgba(184,156,152,0.7)]
+                bg-[#B89C98]/70
+                shadow-[0_0_24px_rgba(184,156,152,0.7)]
               "
             />
 
@@ -579,19 +432,15 @@ export default function Hero() {
               aria-hidden="true"
               className="
                 absolute
-                bottom-[14%]
-                left-[4%]
-                h-1
-                w-1
+                bottom-[21%]
+                left-[11%]
+                h-1.5
+                w-1.5
                 rounded-full
-                bg-[#B8B0A8]/40
-                sm:bottom-[21%]
-                sm:left-[11%]
-                sm:h-1.5
-                sm:w-1.5
-                sm:bg-[#B8B0A8]/45
+                bg-[#B8B0A8]/45
               "
             />
+
           </div>
         </div>
 
@@ -601,11 +450,9 @@ export default function Hero() {
 
         <div
           className="
-            mt-4
             border-t
             border-[#B8B0A8]/12
             pt-5
-            sm:mt-8
             animate-fade-up
           "
           style={{ animationDelay: '380ms' }}
@@ -614,21 +461,19 @@ export default function Hero() {
             className="
               flex
               flex-col
-              gap-4
-              sm:gap-5
+              gap-5
               sm:flex-row
               sm:items-center
               sm:justify-between
             "
           >
+
             <p
               className="
-                text-[9px]
+                text-[10px]
                 uppercase
-                tracking-[0.20em]
+                tracking-[0.22em]
                 text-[#7F7974]
-                sm:text-[10px]
-                sm:tracking-[0.22em]
               "
             >
               Frontend · Backend · Full Stack
@@ -642,15 +487,13 @@ export default function Hero() {
                 flex
                 items-center
                 gap-2
-                text-[9px]
+                text-[10px]
                 uppercase
-                tracking-[0.20em]
+                tracking-[0.22em]
                 text-[#7F7974]
                 transition-colors
                 duration-300
                 hover:text-[#B89C98]
-                sm:text-[10px]
-                sm:tracking-[0.22em]
               "
             >
               Scroll to explore
@@ -665,6 +508,7 @@ export default function Hero() {
                 ↓
               </span>
             </a>
+
           </div>
         </div>
 
@@ -672,17 +516,16 @@ export default function Hero() {
           aria-hidden="true"
           className="
             mx-auto
-            mt-10
+            mt-12
             h-px
-            w-12
+            w-16
             bg-gradient-to-r
             from-transparent
             via-[#B89C98]/30
             to-transparent
-            sm:mt-12
-            sm:w-16
           "
         />
+
       </div>
 
       {/* =====================================================
@@ -707,6 +550,7 @@ export default function Hero() {
           }
         }
       `}</style>
+
     </section>
   )
 }
