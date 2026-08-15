@@ -1,0 +1,70 @@
+{
+  "name": "Yuvraj Jha",
+  "titles": ["Java Developer", "Software Developer", "BCA Student"],
+  "location": "New Delhi, India",
+  "contact": {
+    "email": "yuvrajjha1310@gmail.com",
+    "linkedin": "linkedin.com/in/yuvrajhub",
+    "github": "github.com/yuvrajjha1310-sys"
+  },
+  "summary": "BCA student at GGSIPU with strong fundamentals in Java, C, Data Structures, DBMS, and MySQL. Passionate about software development, problem solving, and analytical thinking. Experienced in building academic projects. Quick learner with the ability to stay consistent and focused until project completion. Seeking internship and software development opportunities to apply technical and logical skills in real-world environments.",
+  "education": {
+    "degree": "Bachelor of Computer Applications (BCA)",
+    "college": "MERI College, GGSIPU",
+    "status": "2nd Year, Semester 4",
+    "expectedGraduation": "2027",
+    "cgpa": "7.0 / 10"
+  },
+  "skills": {
+    "languages": ["Java", "C", "Python", "SQL", "HTML", "CSS", "JavaScript"],
+    "concepts": ["Data Structures & Algorithms", "OOP", "DBMS", "Operating Systems"],
+    "databaseAndTools": ["MySQL", "Git", "GitHub", "VS Code", "MS Excel"],
+    "additional": ["Website Designing", "Data Analysis", "Social Media Management"]
+  },
+  "projects": [
+    {
+      "name": "Library Management System",
+      "stack": ["Java", "MySQL"],
+      "description": "A system for book issue/return management and record tracking, with database integration for efficient data storage and retrieval. Includes adding, updating, searching, and deleting book records with a structured database workflow."
+    },
+    {
+      "name": "Attendance Management System",
+      "stack": ["Java", "MySQL"],
+      "description": "Automates attendance percentage calculation and 75% criteria tracking, with generated attendance reports to reduce manual effort and improve data organization."
+    },
+    {
+      "name": "Car Rental Management System",
+      "stack": ["Java", "MySQL"],
+      "description": "A rental booking and customer management solution built with OOP principles for maintainable application design."
+    },
+    {
+      "name": "Radiance Dental Clinic Website",
+      "stack": ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+      "description": "A full-stack dental clinic website with a public site and an admin panel, built as a college project. TODO(Yuvraj): add a fuller description once it's ready to showcase."
+    },
+    {
+      "name": "Lumora Interior Designer Website",
+      "stack": [],
+      "description": "TODO(Yuvraj): add stack and description."
+    },
+    {
+      "name": "Nexus CRM",
+      "stack": [],
+      "description": "TODO(Yuvraj): add stack and description."
+    },
+    {
+      "name": "Electronics & Gadgets Store Website",
+      "stack": [],
+      "description": "TODO(Yuvraj): add stack and description."
+    }
+  ],
+  "certifications": ["Python for Data Analysis"],
+  "languagesSpoken": ["English", "Hindi", "Maithili", "Sanskrit"],
+  "strengths": [
+    "Strong problem-solving and analytical thinking",
+    "Dedicated and consistent toward completing assigned tasks",
+    "Fast learner with adaptability to new technologies"
+  ],
+  "interests": ["Coding", "Typing", "Researching", "Analysing technology and systems"],
+  "careerObjective": "To secure a Software Development Internship where he can apply his technical knowledge, enhance his programming skills, and contribute to real-world projects."
+}
