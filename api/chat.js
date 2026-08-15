@@ -1,10 +1,18 @@
-import knowledgeBase from '../src/data/knowledgeBase.json' with { type: 'json' }
+import { readFileSync } from 'fs'
+import { fileURLToPath } from 'url'
+import path from 'path'
 
 // Vercel serverless function — runs server-side only.
 // The API key never reaches the browser: set it in your Vercel project's
 // Environment Variables as GEMINI_API_KEY (placeholder name, swap for
 // your real key when you deploy). Get a free key at aistudio.google.com —
 // no credit card required for the Flash-tier models used here.
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const knowledgeBase = JSON.parse(
+  readFileSync(path.join(__dirname, '../src/data/knowledgeBase.json'), 'utf-8')
+)
 
 const SYSTEM_PROMPT = `You are the AI assistant embedded in Yuvraj Jha's developer portfolio website. You answer visitor questions about Yuvraj — his background, skills, projects, and how to get in touch.
 
@@ -37,7 +45,7 @@ export default async function handler(req, res) {
   const trimmedMessages = messages
     .slice(-12)
     .map((m) => ({
-      role: m.role === 'assistant' ? 'model' : 'user', // Gemini uses "model" not "assistant"
+      role: m.role === 'assistant' ? 'model' : 'user',
       parts: [{ text: String(m.content ?? '').slice(0, 2000) }],
     }))
 
@@ -67,7 +75,7 @@ export default async function handler(req, res) {
       .join('\n')
       .trim()
 
-    return res.status(200).json({ reply: reply || "Sorry, I couldn't come up with a reply — try asking again." })
+    return res.status(200).json({ reply: reply || "Sorry, I couldn't come up with a reply — try again." })
   } catch (err) {
     console.error('Chat function error:', err)
     return res.status(500).json({ error: 'Something went wrong reaching the chat service.' })
