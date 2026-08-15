@@ -3,149 +3,227 @@ import yuvrajAvatar from '../assets/yuvraj-3d-avatar-transparent.png'
 
 const EDUCATION = [
   {
-    degree: 'Bachelor of Computer Applications (BCA)',
+    degree: 'Bachelor of Computer Applications',
     org: 'MERI College, GGSIPU',
-    period: '5th Semester — expected 2027',
+    period: '5th Semester',
+    detail: 'Expected 2027',
+  },
+]
+
+const DETAILS = [
+  {
+    label: 'Currently',
+    value: 'BCA · 5th Semester',
+  },
+  {
+    label: 'Focus',
+    value: 'Software Development',
+  },
+  {
+    label: 'Strongest with',
+    value: 'Java · SQL · Web',
+  },
+  {
+    label: 'Based in',
+    value: 'New Delhi, India',
   },
 ]
 
 export default function About() {
   return (
-    <section id="about" className="section py-24 sm:py-32">
-      <div className="grid lg:grid-cols-[280px_1fr] gap-10 lg:gap-16">
-        <Reveal as="div">
-          {/* =====================================================
-              YUVRAJ AVATAR
-          ====================================================== */}
-          <div
-            className="
-              group
-              relative
-              aspect-square
-              w-full
-              max-w-[280px]
-              overflow-hidden
-              rounded-2xl
-              border
-              border-line
-              bg-panel
-            "
-          >
-            {/* Atmospheric glow */}
-            <div
-              aria-hidden="true"
-              className="
-                pointer-events-none
-                absolute
-                inset-0
-                z-0
-                opacity-0
-                transition-opacity
-                duration-700
-                group-hover:opacity-100
-              "
-              style={{
-                background:
-                  'radial-gradient(circle at 50% 38%, rgba(238,232,223,0.10) 0%, rgba(184,156,152,0.06) 35%, transparent 72%)',
-              }}
-            />
+    <section
+      id="about"
+      className="section about-section py-24 sm:py-32 lg:py-40"
+    >
+      {/* =====================================================
+          HEADER
+      ====================================================== */}
 
-            <img
-              src={yuvrajAvatar}
-              alt="Yuvraj Jha"
-              draggable="false"
-              className="
-                relative
-                z-10
-                h-full
-                w-full
-                object-contain
-                select-none
-                opacity-[0.98]
-                brightness-[1.02]
-                contrast-[1.03]
-                saturate-[0.92]
-                transition-transform
-                duration-700
-                ease-out
-                group-hover:scale-[1.035]
-              "
-            />
+      <Reveal as="div">
+        <div className="about-heading">
+          <div>
+            <span className="about-eyebrow">
+              05 / About
+            </span>
 
-            {/* Soft bottom depth */}
-            <div
-              aria-hidden="true"
-              className="
-                pointer-events-none
-                absolute
-                inset-x-0
-                bottom-0
-                z-20
-                h-1/3
-                bg-gradient-to-t
-                from-[#0B0B0B]/25
-                to-transparent
-                opacity-70
-              "
-            />
+            <h2 className="about-title">
+              The developer
+              <br />
+              <em>behind the work.</em>
+            </h2>
           </div>
 
-          <h3 className="font-display text-xl mt-5">
-            Yuvraj Jha
-          </h3>
-
-          <p className="text-mute text-sm mt-1">
-            BCA Student &amp; Java Developer
+          <p className="about-heading-intro">
+            A BCA student who learns by building — turning concepts from
+            coursework into working systems, websites and applications.
           </p>
-        </Reveal>
+        </div>
+      </Reveal>
 
-        <Reveal as="div" delay={100}>
-          <p className="text-lg sm:text-xl leading-relaxed max-w-2xl">
-            I'm a BCA student at GGSIPU with strong fundamentals in Java, C,
-            Data Structures, and DBMS. I like turning coursework into real,
-            working systems — and I'm looking for internship and software
-            development opportunities to apply that in the real world.
-          </p>
+      {/* =====================================================
+          MAIN CONTENT
+      ====================================================== */}
 
-          <h4 className="eyebrow mt-12 mb-4">
-            Education
-          </h4>
+      <div className="about-main">
 
-          <div className="space-y-4">
-            {EDUCATION.map((item) => (
+        {/* ===================================================
+            AVATAR
+        ==================================================== */}
+
+        <Reveal as="div">
+          <div className="about-profile">
+
+            <div className="about-avatar-wrap">
+
               <div
-                key={item.org}
-                className="
-                  flex
-                  flex-col
-                  gap-2
-                  border-b
-                  border-line
-                  pb-4
-                  sm:flex-row
-                  sm:items-center
-                  sm:justify-between
-                  sm:gap-4
-                "
-              >
-                <div>
-                  <p className="font-medium">
-                    {item.degree}
-                  </p>
+                aria-hidden="true"
+                className="about-avatar-glow"
+              />
 
-                  <p className="text-mute text-sm">
-                    {item.org}
-                  </p>
-                </div>
+              <div
+                aria-hidden="true"
+                className="about-avatar-grid"
+              />
 
-                <p className="text-mute text-sm shrink-0">
-                  {item.period}
+              <div className="about-avatar-corner about-avatar-corner--tl" />
+              <div className="about-avatar-corner about-avatar-corner--tr" />
+              <div className="about-avatar-corner about-avatar-corner--bl" />
+              <div className="about-avatar-corner about-avatar-corner--br" />
+
+              <img
+                src={yuvrajAvatar}
+                alt="Yuvraj Jha"
+                draggable="false"
+                className="about-avatar"
+              />
+
+              <div className="about-avatar-status">
+                <span className="about-status-dot" />
+                <span>Available for opportunities</span>
+              </div>
+            </div>
+
+            <div className="about-profile-name">
+              <div>
+                <h3>Yuvraj Jha</h3>
+
+                <p>
+                  BCA Student · Developer
                 </p>
               </div>
-            ))}
+
+              <span className="about-profile-number">
+                05
+              </span>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* ===================================================
+            INFORMATION
+        ==================================================== */}
+
+        <Reveal as="div" delay={120}>
+          <div className="about-content">
+
+            <div className="about-statement">
+              <span className="about-small-label">
+                A little about me
+              </span>
+
+              <p>
+                I&apos;m a BCA student at GGSIPU with strong fundamentals
+                in Java, C, Data Structures and DBMS. I enjoy taking what
+                I learn in class and turning it into something functional —
+                whether that means a management system, a full-stack
+                application or a polished web experience.
+              </p>
+
+              <p>
+                I&apos;m currently focused on becoming a stronger software
+                developer by building more, learning new technologies and
+                understanding what happens beyond the interface.
+              </p>
+            </div>
+
+            {/* ===============================================
+                DETAILS
+            ================================================ */}
+
+            <div className="about-details">
+              {DETAILS.map((detail, index) => (
+                <div
+                  key={detail.label}
+                  className="about-detail"
+                >
+                  <span className="about-detail-number">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <div>
+                    <span className="about-detail-label">
+                      {detail.label}
+                    </span>
+
+                    <span className="about-detail-value">
+                      {detail.value}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ===============================================
+                EDUCATION
+            ================================================ */}
+
+            <div className="about-education">
+              <div className="about-section-label">
+                <span>Education</span>
+                <span>01</span>
+              </div>
+
+              {EDUCATION.map((item) => (
+                <div
+                  key={item.org}
+                  className="about-education-item"
+                >
+                  <div>
+                    <h3>{item.degree}</h3>
+
+                    <p>{item.org}</p>
+                  </div>
+
+                  <div className="about-education-period">
+                    <span>{item.period}</span>
+                    <span>{item.detail}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </Reveal>
       </div>
+
+      {/* =====================================================
+          BOTTOM STATEMENT
+      ====================================================== */}
+
+      <Reveal as="div" delay={240}>
+        <div className="about-bottom">
+
+          <span className="about-bottom-line" />
+
+          <p>
+            Still learning. Still building.
+            <em> Still getting better.</em>
+          </p>
+
+          <span className="about-bottom-line" />
+
+        </div>
+      </Reveal>
     </section>
   )
 }
