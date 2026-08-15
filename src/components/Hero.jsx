@@ -289,9 +289,10 @@ export default function Hero() {
               "
               style={{ animationDelay: '190ms' }}
             >
-              Turning coursework and side projects into real,
-              working systems — looking for an internship to do
-              that for real.
+              Turning ideas, coursework and real-world experience into
+              working systems — with a 2-month internship at Digital
+              Tatsat and a growing portfolio of full-stack and frontend
+              projects.
             </p>
 
             <div
@@ -363,8 +364,44 @@ export default function Hero() {
                   will-change-transform
                 "
               >
-                Get in touch
+                Let&apos;s work together
               </a>
+            </div>
+
+            {/* Professional experience / availability */}
+
+            <div
+              className="
+                mt-8
+                flex
+                flex-wrap
+                items-center
+                gap-x-5
+                gap-y-2
+                text-[9px]
+                uppercase
+                tracking-[0.18em]
+                text-[#77716C]
+                animate-fade-up
+                sm:mt-10
+                sm:text-[10px]
+              "
+              style={{ animationDelay: '350ms' }}
+            >
+              <span className="inline-flex items-center gap-2">
+                <span
+                  className="
+                    h-1.5
+                    w-1.5
+                    rounded-full
+                    bg-[#B89C98]
+                    shadow-[0_0_12px_rgba(184,156,152,0.65)]
+                  "
+                />
+                Open to opportunities
+              </span>
+
+              <span>2-Month Internship · Digital Tatsat</span>
             </div>
           </div>
 
@@ -461,13 +498,7 @@ export default function Hero() {
                 perspective: '1000px',
               }}
             >
-              {/* Floating layer */}
-
-              <div
-                className="
-                  animate-[avatarFloat_7s_ease-in-out_infinite]
-                "
-              >
+              <div className="animate-[avatarFloat_7s_ease-in-out_infinite]">
                 <img
                   src={yuvrajAvatar}
                   alt="Yuvraj Jha 3D avatar"

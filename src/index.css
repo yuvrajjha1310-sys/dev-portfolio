@@ -8472,3 +8472,70 @@ a[class*="bg-signal"]:hover {
     transition: none;
   }
 }
+
+/* =========================================================
+   CONTACT — EXPERIENCE STATUS
+========================================================= */
+
+.contact-experience {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.6rem;
+
+  margin-top: 1.4rem;
+
+  color: #706963;
+
+  font-size: 0.5rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+}
+
+.contact-experience__dot {
+  width: 5px;
+
+  height: 5px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #b89c98;
+
+  box-shadow:
+    0 0 12px
+    rgba(184, 156, 152, 0.65);
+
+  animation:
+    contactExperiencePulse
+    2.2s
+    ease-in-out
+    infinite;
+}
+
+@keyframes contactExperiencePulse {
+  0%,
+  100% {
+    opacity: 0.45;
+
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-experience__dot {
+    animation: none;
+  }
+}

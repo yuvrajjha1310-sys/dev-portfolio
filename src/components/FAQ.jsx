@@ -4,13 +4,13 @@ import Reveal from './Reveal.jsx'
 const FAQS = [
   {
     number: '01',
-    q: 'What kind of roles are you looking for?',
-    a: 'I’m looking for a software development internship where I can apply my Java, C, Python, SQL/MySQL and web development skills to real problems while continuing to learn from an experienced team.',
+    q: 'What kind of opportunities are you looking for?',
+    a: 'I’m open to both software development internships and job opportunities where I can apply my Java, C, Python, SQL/MySQL and web development skills to real problems while continuing to learn and grow with a professional team.',
   },
   {
     number: '02',
     q: 'Do you have professional experience?',
-    a: 'Not yet. I’m currently a BCA student at MERI College, GGSIPU, in my 5th semester. The projects shown here come from coursework and self-directed development, and I’m looking for my first professional opportunity.',
+    a: 'Yes. I completed a 2-month internship at Digital Tatsat, gaining hands-on exposure to a professional working environment. Alongside that experience, I’ve continued building academic and self-directed projects.',
   },
   {
     number: '03',
@@ -25,12 +25,17 @@ const FAQS = [
   {
     number: '05',
     q: 'What are you currently focused on?',
-    a: 'I’m focused on becoming a stronger software developer by improving my full-stack development skills, building better interfaces, understanding backend architecture and creating projects that are closer to production quality.',
+    a: 'I’m currently focused on becoming a stronger software developer by improving my full-stack development skills, building better interfaces, understanding backend architecture and creating projects that are closer to production quality.',
   },
   {
     number: '06',
+    q: 'Where are you currently in your studies?',
+    a: 'I’m currently in my 5th semester of BCA at MERI College, GGSIPU, with my degree expected in 2027.',
+  },
+  {
+    number: '07',
     q: 'How can I get in touch with you?',
-    a: 'The easiest way is through the contact section at the bottom of this portfolio. You can also find my professional and project links there.',
+    a: 'The easiest way is through the contact section at the bottom of this portfolio. You can also find my GitHub and LinkedIn profiles there.',
   },
 ]
 

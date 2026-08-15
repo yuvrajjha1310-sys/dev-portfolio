@@ -16,16 +16,16 @@ const DETAILS = [
     value: 'BCA · 5th Semester',
   },
   {
+    label: 'Experience',
+    value: 'Digital Tatsat · 2 Months',
+  },
+  {
     label: 'Focus',
     value: 'Software Development',
   },
   {
-    label: 'Strongest with',
-    value: 'Java · SQL · Web',
-  },
-  {
-    label: 'Based in',
-    value: 'New Delhi, India',
+    label: 'Open to',
+    value: 'Internships · Jobs',
   },
 ]
 
@@ -54,8 +54,9 @@ export default function About() {
           </div>
 
           <p className="about-heading-intro">
-            A BCA student who learns by building — turning concepts from
-            coursework into working systems, websites and applications.
+            A BCA student with hands-on project experience and professional
+            exposure, learning by building and continuously looking for the
+            next opportunity to grow.
           </p>
         </div>
       </Reveal>
@@ -99,7 +100,7 @@ export default function About() {
 
               <div className="about-avatar-status">
                 <span className="about-status-dot" />
-                <span>Available for opportunities</span>
+                <span>Open to opportunities</span>
               </div>
             </div>
 
@@ -134,15 +135,18 @@ export default function About() {
               <p>
                 I&apos;m a BCA student at GGSIPU with strong fundamentals
                 in Java, C, Data Structures and DBMS. I enjoy taking what
-                I learn in class and turning it into something functional —
-                whether that means a management system, a full-stack
-                application or a polished web experience.
+                I learn and turning it into something functional — from
+                management systems and full-stack applications to polished
+                web experiences.
               </p>
 
               <p>
-                I&apos;m currently focused on becoming a stronger software
-                developer by building more, learning new technologies and
-                understanding what happens beyond the interface.
+                I&apos;ve also completed a 2-month internship at Digital
+                Tatsat, giving me hands-on exposure to a professional
+                working environment. I&apos;m now looking to build on that
+                experience through opportunities where I can contribute,
+                learn from a team and continue growing as a software
+                developer.
               </p>
             </div>
 
@@ -174,13 +178,46 @@ export default function About() {
             </div>
 
             {/* ===============================================
+                EXPERIENCE
+            ================================================ */}
+
+            <div className="about-education">
+              <div className="about-section-label">
+                <span>Experience</span>
+                <span>01</span>
+              </div>
+
+              <div className="about-education-item">
+                <div>
+                  <h3>
+                    2-Month Internship
+                  </h3>
+
+                  <p>
+                    Digital Tatsat
+                  </p>
+                </div>
+
+                <div className="about-education-period">
+                  <span>
+                    Professional Experience
+                  </span>
+
+                  <span>
+                    Completed
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* ===============================================
                 EDUCATION
             ================================================ */}
 
             <div className="about-education">
               <div className="about-section-label">
                 <span>Education</span>
-                <span>01</span>
+                <span>02</span>
               </div>
 
               {EDUCATION.map((item) => (
@@ -217,7 +254,7 @@ export default function About() {
 
           <p>
             Still learning. Still building.
-            <em> Still getting better.</em>
+            <em> Ready for what&apos;s next.</em>
           </p>
 
           <span className="about-bottom-line" />

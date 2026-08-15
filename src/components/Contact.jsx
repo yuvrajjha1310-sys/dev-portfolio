@@ -62,9 +62,9 @@ export default function Contact() {
             </h2>
 
             <p className="contact-intro">
-              Whether it&apos;s an internship opportunity, a project idea,
-              or simply a conversation about development — I&apos;d be happy
-              to hear from you.
+              Open to software development internships, job opportunities,
+              interesting projects, and conversations with people building
+              things worth working on.
             </p>
           </div>
         </Reveal>
@@ -149,13 +149,27 @@ export default function Contact() {
 
               <div>
                 <span className="contact-info-card__label">
-                  Looking for
+                  Open to
                 </span>
 
-                <p>Software Development Internship</p>
+                <p>Internships · Job Opportunities</p>
               </div>
             </div>
 
+          </div>
+        </Reveal>
+
+        {/* =====================================================
+            EXPERIENCE NOTE
+        ====================================================== */}
+
+        <Reveal as="div" delay={210}>
+          <div className="contact-experience">
+            <span className="contact-experience__dot" />
+
+            <span>
+              2-month internship experience · Digital Tatsat
+            </span>
           </div>
         </Reveal>
 

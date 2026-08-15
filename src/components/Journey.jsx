@@ -31,15 +31,40 @@ const LEVELS = [
     heading: 'Building for the web.',
     body:
       'Moved into full-stack and frontend development, creating deployed websites and applications for real-world use cases.',
-    skills: ['React', 'Flask', 'PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
+    skills: [
+      'React',
+      'Flask',
+      'PHP',
+      'MySQL',
+      'HTML',
+      'CSS',
+      'JavaScript',
+    ],
   },
   {
     n: '05',
-    label: 'NEXT',
-    heading: 'Still climbing.',
+    label: 'EXPERIENCE',
+    heading: 'Stepping into the real world.',
     body:
-      'Currently in my 5th semester of BCA at GGSIPU, continuing to build, experiment and look for opportunities to work on real software teams.',
-    skills: ['5th Semester', 'BCA', 'Internships', 'Real-world development'],
+      'Completed a 2-month internship at Digital Tatsat, gaining professional exposure and experience working in a real development environment.',
+    skills: [
+      'Digital Tatsat',
+      '2-Month Internship',
+      'Professional Experience',
+    ],
+  },
+  {
+    n: '06',
+    label: 'NEXT',
+    heading: 'Ready for what comes next.',
+    body:
+      'Currently in my 5th semester of BCA at GGSIPU, continuing to build, learn and actively looking for internship and job opportunities in software development.',
+    skills: [
+      '5th Semester',
+      'BCA',
+      'Internships',
+      'Job Opportunities',
+    ],
   },
 ]
 
@@ -134,7 +159,7 @@ export default function Journey() {
 
           <div className="journey-footer__line" />
 
-          <span>05 / NEXT</span>
+          <span>06 / NEXT</span>
         </div>
       </Reveal>
     </section>
