@@ -3134,3 +3134,526 @@ html.custom-cursor-active * {
     transform: none !important;
   }
 }
+
+/* =======================================================
+   JOURNEY — DEVELOPER PROGRESSION
+======================================================= */
+
+.journey-section {
+  position: relative;
+}
+
+.journey-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  align-items: end;
+  gap: 4rem;
+  margin-bottom: 5rem;
+}
+
+.journey-eyebrow {
+  display: inline-block;
+  margin-bottom: 1.35rem;
+  color: #7f7974;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.journey-title {
+  margin: 0;
+  color: #eee8df;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.2rem, 6vw, 6.5rem);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+}
+
+.journey-title em {
+  color: #b89c98;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.journey-intro {
+  max-width: 430px;
+  margin: 0 0 0 auto;
+  color: #b8b0a8;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* =======================================================
+   TRACK
+======================================================= */
+
+.journey-track {
+  position: relative;
+  border-top: 1px solid rgba(184, 176, 168, 0.12);
+}
+
+.journey-track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 106px;
+  width: 1px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(184, 156, 152, 0.4),
+      rgba(184, 176, 168, 0.08) 80%,
+      transparent
+    );
+  pointer-events: none;
+}
+
+/* =======================================================
+   LEVEL
+======================================================= */
+
+.journey-level {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    80px
+    52px
+    minmax(0, 1fr);
+
+  min-height: 230px;
+
+  border-bottom: 1px solid rgba(184, 176, 168, 0.1);
+
+  transition:
+    background 400ms ease,
+    padding 400ms ease;
+}
+
+.journey-level:hover {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(184, 156, 152, 0.025),
+      transparent
+    );
+}
+
+/* =======================================================
+   NUMBER
+======================================================= */
+
+.journey-level__number {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: flex-start;
+
+  padding-top: 2.4rem;
+}
+
+.journey-level__number span {
+  color: #625e5a;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 0.85rem;
+
+  font-variant-numeric: tabular-nums;
+
+  transition:
+    color 350ms ease,
+    transform 350ms ease;
+}
+
+.journey-level:hover .journey-level__number span {
+  color: #b89c98;
+
+  transform: translateX(4px);
+}
+
+/* =======================================================
+   TIMELINE LINE
+======================================================= */
+
+.journey-level__line {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.journey-level__dot {
+  position: absolute;
+
+  top: 2.7rem;
+
+  width: 9px;
+  height: 9px;
+
+  border: 1px solid #625e5a;
+
+  border-radius: 50%;
+
+  background: #0c0c0c;
+
+  box-shadow:
+    0 0 0 5px rgba(184, 156, 152, 0.025);
+
+  transition:
+    border-color 350ms ease,
+    background 350ms ease,
+    transform 350ms ease,
+    box-shadow 350ms ease;
+}
+
+.journey-level:hover .journey-level__dot {
+  border-color: #b89c98;
+
+  background: #b89c98;
+
+  transform: scale(1.25);
+
+  box-shadow:
+    0 0 0 7px rgba(184, 156, 152, 0.045),
+    0 0 22px rgba(184, 156, 152, 0.16);
+}
+
+/* =======================================================
+   CONTENT
+======================================================= */
+
+.journey-level__content {
+  max-width: 760px;
+
+  padding: 2.35rem 0 3rem;
+
+  transition:
+    transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journey-level:hover .journey-level__content {
+  transform: translateX(7px);
+}
+
+.journey-level__top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  margin-bottom: 1.25rem;
+}
+
+.journey-level__label {
+  color: #b89c98;
+
+  font-size: 0.58rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+}
+
+.journey-level__index {
+  color: #504c48;
+
+  font-size: 0.53rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+}
+
+.journey-level h3 {
+  margin: 0 0 0.8rem;
+
+  color: #eee8df;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: -0.035em;
+}
+
+.journey-level p {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #8f8983;
+
+  font-size: 0.88rem;
+
+  line-height: 1.8;
+}
+
+/* =======================================================
+   SKILL TAGS
+======================================================= */
+
+.journey-level__skills {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.45rem;
+
+  margin-top: 1.45rem;
+}
+
+.journey-level__skills span {
+  display: inline-flex;
+
+  align-items: center;
+
+  min-height: 28px;
+
+  padding: 0.35rem 0.7rem;
+
+  border: 1px solid rgba(184, 176, 168, 0.1);
+
+  border-radius: 999px;
+
+  color: #77716c;
+
+  background: rgba(255, 255, 255, 0.012);
+
+  font-size: 0.52rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  transition:
+    color 300ms ease,
+    border-color 300ms ease,
+    background 300ms ease,
+    transform 300ms ease;
+}
+
+.journey-level__skills span:hover {
+  color: #eee8df;
+
+  border-color: rgba(184, 156, 152, 0.3);
+
+  background: rgba(184, 156, 152, 0.045);
+
+  transform: translateY(-2px);
+}
+
+/* =======================================================
+   FOOTER
+======================================================= */
+
+.journey-footer {
+  display: grid;
+
+  grid-template-columns: auto minmax(60px, 1fr) auto;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-top: 2.5rem;
+
+  color: #625e5a;
+
+  font-size: 0.55rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+}
+
+.journey-footer__line {
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(184, 176, 168, 0.02),
+      rgba(184, 176, 168, 0.14),
+      rgba(184, 176, 168, 0.02)
+    );
+}
+
+/* =======================================================
+   TABLET
+======================================================= */
+
+@media (max-width: 900px) {
+  .journey-heading {
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+
+    margin-bottom: 3.5rem;
+  }
+
+  .journey-intro {
+    margin-left: 0;
+
+    max-width: 620px;
+  }
+
+  .journey-track::before {
+    left: 82px;
+  }
+
+  .journey-level {
+    grid-template-columns:
+      60px
+      44px
+      minmax(0, 1fr);
+  }
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media (max-width: 680px) {
+  .journey-heading {
+    margin-bottom: 3rem;
+  }
+
+  .journey-title {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+
+  .journey-intro {
+    font-size: 0.82rem;
+
+    line-height: 1.7;
+  }
+
+  .journey-track::before {
+    left: 25px;
+  }
+
+  .journey-level {
+    grid-template-columns: 50px minmax(0, 1fr);
+
+    min-height: 0;
+  }
+
+  .journey-level__number {
+    grid-column: 1;
+
+    grid-row: 1;
+
+    padding-top: 2rem;
+
+    justify-content: flex-start;
+  }
+
+  .journey-level__number span {
+    font-size: 0.7rem;
+  }
+
+  .journey-level__line {
+    position: absolute;
+
+    inset: 0 auto 0 0;
+
+    width: 50px;
+
+    pointer-events: none;
+  }
+
+  .journey-level__dot {
+    top: 2.25rem;
+
+    left: 21px;
+
+    width: 8px;
+
+    height: 8px;
+  }
+
+  .journey-level__content {
+    grid-column: 2;
+
+    padding: 2rem 0 2.7rem;
+
+    padding-left: 0.75rem;
+  }
+
+  .journey-level__top {
+    margin-bottom: 1rem;
+  }
+
+  .journey-level__index {
+    display: none;
+  }
+
+  .journey-level h3 {
+    font-size: 1.8rem;
+  }
+
+  .journey-level p {
+    font-size: 0.8rem;
+
+    line-height: 1.75;
+  }
+
+  .journey-level__skills {
+    gap: 0.35rem;
+
+    margin-top: 1.2rem;
+  }
+
+  .journey-level__skills span {
+    min-height: 25px;
+
+    padding:
+      0.3rem
+      0.55rem;
+
+    font-size: 0.46rem;
+  }
+
+  .journey-footer {
+    grid-template-columns: 1fr auto;
+
+    font-size: 0.48rem;
+  }
+
+  .journey-footer__line {
+    display: none;
+  }
+}
+
+/* =======================================================
+   REDUCED MOTION
+======================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-level__content,
+  .journey-level__number span,
+  .journey-level__dot,
+  .journey-level__skills span {
+    transition: none;
+  }
+}

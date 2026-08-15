@@ -1,61 +1,142 @@
 import Reveal from './Reveal.jsx'
 
-// Grounded in src/data/knowledgeBase.json — real skills and real project history,
-// framed as a progression rather than a flat skills list.
 const LEVELS = [
   {
     n: '01',
-    label: 'Learn',
-    heading: 'Fundamentals',
-    body: 'Java, C, Python, SQL, HTML/CSS/JS — plus the theory underneath: Data Structures & Algorithms and OOP.',
+    label: 'LEARN',
+    heading: 'The foundation.',
+    body:
+      'Started with Java, C, Python, SQL and the fundamentals of web development — building the problem-solving foundation behind everything that came after.',
+    skills: ['Java', 'C', 'Python', 'SQL', 'HTML', 'CSS', 'JavaScript'],
   },
   {
     n: '02',
-    label: 'Structure',
-    heading: 'Systems thinking',
-    body: 'DBMS and Operating Systems coursework, paired with a Git/GitHub workflow for version control on every project.',
+    label: 'STRUCTURE',
+    heading: 'Understanding systems.',
+    body:
+      'Moved beyond syntax into the systems underneath software — DBMS, Operating Systems, Data Structures and OOP — while developing a Git and GitHub workflow.',
+    skills: ['DBMS', 'Operating Systems', 'DSA', 'OOP', 'Git', 'GitHub'],
   },
   {
     n: '03',
-    label: 'Build',
-    heading: 'Working software',
-    body: 'Turned that theory into three Java + MySQL desktop systems — library management, attendance tracking, car rental — each with real database integration.',
+    label: 'BUILD',
+    heading: 'Turning theory into software.',
+    body:
+      'Built Java + MySQL applications for real workflows: library management, attendance tracking and car rental management.',
+    skills: ['Java', 'MySQL', 'Applications', 'Database'],
   },
   {
     n: '04',
-    label: 'Ship',
-    heading: 'Full-stack web',
-    body: 'Moved into full-stack web: a PHP/MySQL clinic site with a public front end and an admin panel, plus ongoing web projects.',
+    label: 'SHIP',
+    heading: 'Building for the web.',
+    body:
+      'Moved into full-stack and frontend development, creating deployed websites and applications for real-world use cases.',
+    skills: ['React', 'Flask', 'PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
   },
   {
     n: '05',
-    label: 'Next',
-    heading: 'Looking for the next step',
-    body: 'Currently a BCA student at GGSIPU, seeking a software development internship to apply these skills on a real team.',
+    label: 'NEXT',
+    heading: 'Still climbing.',
+    body:
+      'Currently in my 5th semester of BCA at GGSIPU, continuing to build, experiment and look for opportunities to work on real software teams.',
+    skills: ['5th Semester', 'BCA', 'Internships', 'Real-world development'],
   },
 ]
 
+function JourneyLevel({ level, index }) {
+  return (
+    <Reveal
+      as="article"
+      delay={index * 80}
+      className="journey-level"
+    >
+      <div className="journey-level__number">
+        <span>{level.n}</span>
+      </div>
+
+      <div className="journey-level__line">
+        <span className="journey-level__dot" />
+      </div>
+
+      <div className="journey-level__content">
+        <div className="journey-level__top">
+          <span className="journey-level__label">
+            {level.label}
+          </span>
+
+          <span className="journey-level__index">
+            LEVEL {level.n}
+          </span>
+        </div>
+
+        <h3>{level.heading}</h3>
+
+        <p>{level.body}</p>
+
+        <div className="journey-level__skills">
+          {level.skills.map((skill) => (
+            <span
+              key={skill}
+              data-cursor="view"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </Reveal>
+  )
+}
+
 export default function Journey() {
   return (
-    <section id="journey" className="section py-24 sm:py-32">
+    <section
+      id="journey"
+      className="section journey-section py-24 sm:py-32 lg:py-40"
+    >
       <Reveal as="div">
-        <h2 className="font-display text-3xl sm:text-4xl max-w-lg leading-tight">
-          How I got <span className="italic text-signal">here.</span>
-        </h2>
+        <div className="journey-heading">
+          <div>
+            <span className="journey-eyebrow">
+              Journey / 02
+            </span>
+
+            <h2 className="journey-title">
+              How I got
+              <br />
+              <em>here.</em>
+            </h2>
+          </div>
+
+          <p className="journey-intro">
+            Every level came from building something, learning something
+            new, and pushing the boundary of what I could do next.
+          </p>
+        </div>
       </Reveal>
 
-      <div className="mt-14 border-t border-line">
-        {LEVELS.map((level, i) => (
-          <Reveal key={level.n} as="div" delay={i * 60} className="grid sm:grid-cols-[100px_140px_1fr] gap-3 sm:gap-8 border-b border-line py-8">
-            <span className="font-display text-mute text-sm tabular-nums">LEVEL {level.n}</span>
-            <span className="eyebrow">{level.label}</span>
-            <div className="max-w-xl">
-              <h3 className="font-display text-xl sm:text-2xl mb-2">{level.heading}</h3>
-              <p className="text-mute leading-relaxed">{level.body}</p>
-            </div>
-          </Reveal>
+      <div className="journey-track">
+        {LEVELS.map((level, index) => (
+          <JourneyLevel
+            key={level.n}
+            level={level}
+            index={index}
+          />
         ))}
       </div>
+
+      <Reveal
+        as="div"
+        delay={LEVELS.length * 80}
+      >
+        <div className="journey-footer">
+          <span>Current level</span>
+
+          <div className="journey-footer__line" />
+
+          <span>05 / NEXT</span>
+        </div>
+      </Reveal>
     </section>
   )
 }
