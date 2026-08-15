@@ -17,8 +17,8 @@ export default function Hero() {
         className="mt-8 max-w-xl text-lg text-mute font-body animate-fade-up"
         style={{ animationDelay: '200ms' }}
       >
-        I help teams turn ideas into working software — clean interfaces, solid
-        systems underneath.
+        Turning coursework and side projects into real, working
+        systems — looking for an internship to do that for real.
       </p>
 
       <div

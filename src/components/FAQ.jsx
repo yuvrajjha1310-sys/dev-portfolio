@@ -1,18 +1,20 @@
 import { useState } from 'react'
+import Reveal from './Reveal.jsx'
 
-// TODO(Yuvraj): replace with the questions you actually want to answer.
+// Sourced from knowledgeBase.json — reframed as questions a recruiter or
+// visitor would actually ask a student portfolio, not a freelancer FAQ.
 const FAQS = [
   {
-    q: 'What kind of projects do you take on?',
-    a: 'Placeholder answer — describe the kind of work you want to be approached for.',
+    q: 'What kind of roles are you looking for?',
+    a: 'A software development internship — somewhere I can apply Java, C, Python, and SQL/MySQL to real problems and keep learning fast.',
   },
   {
-    q: 'Do you work solo or with a team?',
-    a: 'Placeholder answer — describe how you like to collaborate.',
+    q: 'Do you have professional experience?',
+    a: "Not yet. I'm a BCA student at MERI College, GGSIPU (2nd year, semester 4), and the projects here come from coursework and self-directed practice — looking for my first internship to build on that.",
   },
   {
-    q: 'How long does a typical project take?',
-    a: 'Placeholder answer — set expectations on timelines.',
+    q: 'What have you actually built?',
+    a: 'A few Java/MySQL systems — library management, attendance tracking, and car rental — plus some web projects like a full-stack dental clinic site. All in the Selected Work section above.',
   },
 ]
 
@@ -51,12 +53,14 @@ function FAQItem({ q, a }) {
 export default function FAQ() {
   return (
     <section className="section py-24 sm:py-32">
-      <h2 className="font-display text-3xl sm:text-4xl mb-10">Questions</h2>
-      <div>
+      <Reveal as="div">
+        <h2 className="font-display text-3xl sm:text-4xl mb-10">Questions</h2>
+      </Reveal>
+      <Reveal as="div" delay={100}>
         {FAQS.map((item) => (
           <FAQItem key={item.q} {...item} />
         ))}
-      </div>
+      </Reveal>
     </section>
   )
 }

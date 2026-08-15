@@ -1,18 +1,17 @@
-// TODO(Yuvraj): adjust these to what you actually offer/do, and the tool row below.
 const SERVICES = [
   {
     title: 'Frontend Development',
     description: 'Building interfaces that are fast, accessible, and easy to use.',
-    tags: ['React', 'Responsive'],
+    tags: ['JavaScript', 'HTML/CSS', 'Responsive'],
   },
   {
-    title: 'Backend & APIs',
-    description: 'Designing systems that hold up under real usage — auth, data, integrations.',
-    tags: ['Node.js', 'REST'],
+    title: 'Backend & Databases',
+    description: 'Structured systems underneath — data modeling, queries, and application logic that holds up.',
+    tags: ['Java', 'MySQL', 'SQL'],
   },
 ]
 
-const TOOLS = ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'Vite', 'Git']
+const TOOLS = ['Java', 'JavaScript', 'Python', 'SQL', 'MySQL', 'Git', 'GitHub', 'VS Code']
 
 export default function Services() {
   return (
