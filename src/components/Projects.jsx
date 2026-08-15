@@ -55,6 +55,7 @@ export default function Projects() {
           <Reveal key={project.name} as="div" delay={i * 60}>
             <a
               href="#"
+              onClick={(e) => e.preventDefault()}
               className="group relative overflow-hidden rounded-2xl bg-panel border border-line p-8 aspect-[4/3] flex flex-col justify-end hover:border-signal transition-colors"
             >
               <span className="absolute top-6 left-8 text-xs text-mute font-medium">

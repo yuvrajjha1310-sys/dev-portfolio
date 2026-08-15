@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const SERVICES = [
   {
     title: 'Frontend Development',
@@ -14,6 +16,11 @@ const SERVICES = [
 const TOOLS = ['Java', 'JavaScript', 'Python', 'SQL', 'MySQL', 'Git', 'GitHub', 'VS Code']
 
 export default function Services() {
+  // Card-stack interaction: the active card comes forward in the signal
+  // color, the rest recede/dim. Defaults to the first card at rest, same
+  // as the previous static design.
+  const [activeIndex, setActiveIndex] = useState(0)
+
   return (
     <section id="services" className="section py-24 sm:py-32">
       <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
@@ -36,34 +43,46 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="space-y-4">
-          {SERVICES.map((service, i) => (
-            <div
-              key={service.title}
-              className={`rounded-2xl border p-6 transition-colors ${
-                i === 0
-                  ? 'bg-signal border-signal text-bone'
-                  : 'bg-panel border-line hover:border-signal'
-              }`}
-            >
-              <h3 className="font-display text-xl mb-2">{service.title}</h3>
-              <p className={`text-sm mb-4 ${i === 0 ? 'text-bone/85' : 'text-mute'}`}>
-                {service.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {service.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={`text-xs uppercase tracking-wide rounded-full px-2.5 py-1 border ${
-                      i === 0 ? 'border-bone/40' : 'border-line text-mute'
-                    }`}
-                  >
-                    {tag}
-                  </span>
-                ))}
+        <div
+          className="space-y-4"
+          onMouseLeave={() => setActiveIndex(0)}
+        >
+          {SERVICES.map((service, i) => {
+            const isActive = i === activeIndex
+            return (
+              <div
+                key={service.title}
+                onMouseEnter={() => setActiveIndex(i)}
+                onClick={() => setActiveIndex(i)}
+                onFocus={() => setActiveIndex(i)}
+                tabIndex={0}
+                role="button"
+                aria-pressed={isActive}
+                className={`relative rounded-2xl border p-6 cursor-pointer transition-all duration-300 ease-out will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-signal ${
+                  isActive
+                    ? 'bg-signal border-signal text-bone scale-[1.02] shadow-2xl shadow-signal/20 z-10'
+                    : 'bg-panel border-line text-bone opacity-60 scale-[0.98] hover:opacity-80'
+                }`}
+              >
+                <h3 className="font-display text-xl mb-2">{service.title}</h3>
+                <p className={`text-sm mb-4 ${isActive ? 'text-bone/85' : 'text-mute'}`}>
+                  {service.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {service.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`text-xs uppercase tracking-wide rounded-full px-2.5 py-1 border ${
+                        isActive ? 'border-bone/40' : 'border-line text-mute'
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

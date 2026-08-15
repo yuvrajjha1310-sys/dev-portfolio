@@ -1,16 +1,45 @@
+import { useEffect, useState } from 'react'
+import HeroAvatar from './HeroAvatar.jsx'
+
+const CYCLE_WORDS = ['ship.', 'scale.', 'learn.']
+const CYCLE_MS = 2200
+
 export default function Hero() {
+  const [wordIndex, setWordIndex] = useState(0)
+  const [cycling, setCycling] = useState(true)
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    setCycling(!prefersReduced)
+    if (prefersReduced) return
+
+    const id = setInterval(() => {
+      setWordIndex((i) => (i + 1) % CYCLE_WORDS.length)
+    }, CYCLE_MS)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section id="top" className="section pt-40 pb-24 sm:pt-48 sm:pb-32">
-      <p className="eyebrow mb-6 animate-fade-up" style={{ animationDelay: '0ms' }}>
-        Yuvraj Jha — Developer
-      </p>
+      <div
+        className="mb-6 flex items-center gap-4 animate-fade-up"
+        style={{ animationDelay: '0ms' }}
+      >
+        <p className="eyebrow">Yuvraj Jha — Developer</p>
+        <HeroAvatar />
+      </div>
 
       <h1
         className="font-display font-medium text-[13vw] sm:text-[7vw] lg:text-[6.2rem] leading-[0.95] tracking-tightest max-w-4xl animate-fade-up"
         style={{ animationDelay: '80ms' }}
       >
         Build things{' '}
-        <span className="italic text-signal">that ship.</span>
+        <span
+          key={cycling ? wordIndex : 'static'}
+          className={`italic text-signal inline-block ${cycling ? 'animate-word-cycle' : ''}`}
+        >
+          that {CYCLE_WORDS[wordIndex]}
+        </span>
       </h1>
 
       <p

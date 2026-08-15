@@ -68,3 +68,32 @@
     transform: none;
   }
 }
+
+@keyframes wordCycle {
+  0% {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-0.4em);
+  }
+}
+
+.animate-word-cycle {
+  animation: wordCycle 2.2s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-word-cycle {
+    animation: none;
+  }
+}
