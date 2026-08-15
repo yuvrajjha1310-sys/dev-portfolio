@@ -1,49 +1,77 @@
 import { useState } from 'react'
 import Reveal from './Reveal.jsx'
 
-// Sourced from knowledgeBase.json — reframed as questions a recruiter or
-// visitor would actually ask a student portfolio, not a freelancer FAQ.
 const FAQS = [
   {
+    number: '01',
     q: 'What kind of roles are you looking for?',
-    a: 'A software development internship — somewhere I can apply Java, C, Python, and SQL/MySQL to real problems and keep learning fast.',
+    a: 'I’m looking for a software development internship where I can apply my Java, C, Python, SQL/MySQL and web development skills to real problems while continuing to learn from an experienced team.',
   },
   {
+    number: '02',
     q: 'Do you have professional experience?',
-    a: "Not yet. I'm a BCA student at MERI College, GGSIPU (2nd year, semester 4), and the projects here come from coursework and self-directed practice — looking for my first internship to build on that.",
+    a: 'Not yet. I’m currently a BCA student at MERI College, GGSIPU, in my 5th semester. The projects shown here come from coursework and self-directed development, and I’m looking for my first professional opportunity.',
   },
   {
+    number: '03',
     q: 'What have you actually built?',
-    a: 'A few Java/MySQL systems — library management, attendance tracking, and car rental — plus some web projects like a full-stack dental clinic site. All in the Selected Work section above.',
+    a: 'I’ve built Java and MySQL systems including Library Management, Attendance Management and Car Rental applications, along with web projects such as Nexus CRM, AttendX, a dental clinic website, an interior designer website and an electronics website.',
+  },
+  {
+    number: '04',
+    q: 'Can you build full-stack applications?',
+    a: 'Yes. I’ve worked across frontend interfaces, backend logic and databases. My projects include React-based applications as well as PHP/MySQL and Flask-based work.',
+  },
+  {
+    number: '05',
+    q: 'What are you currently focused on?',
+    a: 'I’m focused on becoming a stronger software developer by improving my full-stack development skills, building better interfaces, understanding backend architecture and creating projects that are closer to production quality.',
+  },
+  {
+    number: '06',
+    q: 'How can I get in touch with you?',
+    a: 'The easiest way is through the contact section at the bottom of this portfolio. You can also find my professional and project links there.',
   },
 ]
 
-function FAQItem({ q, a }) {
-  const [open, setOpen] = useState(false)
-
+function FAQItem({ item, open, onToggle }) {
   return (
-    <div className="border-b border-line py-5">
+    <div
+      className={`faq-item ${
+        open ? 'faq-item--open' : ''
+      }`}
+    >
       <button
-        onClick={() => setOpen((v) => !v)}
+        type="button"
+        onClick={onToggle}
         aria-expanded={open}
-        className="w-full flex items-center justify-between text-left gap-4"
+        className="faq-question"
       >
-        <span className="font-medium">{q}</span>
+        <span className="faq-question__number">
+          {item.number}
+        </span>
+
+        <span className="faq-question__text">
+          {item.q}
+        </span>
+
         <span
-          className={`shrink-0 text-signal text-xl leading-none transition-transform duration-200 ${
-            open ? 'rotate-45' : ''
-          }`}
+          className="faq-question__icon"
+          aria-hidden="true"
         >
-          +
+          <span />
+          <span />
         </span>
       </button>
+
       <div
-        className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-          open ? 'grid-rows-[1fr] mt-3' : 'grid-rows-[0fr]'
+        className={`faq-answer ${
+          open ? 'faq-answer--open' : ''
         }`}
+        aria-hidden={!open}
       >
-        <div className="overflow-hidden">
-          <p className="text-mute text-sm leading-relaxed">{a}</p>
+        <div className="faq-answer__inner">
+          <p>{item.a}</p>
         </div>
       </div>
     </div>
@@ -51,15 +79,70 @@ function FAQItem({ q, a }) {
 }
 
 export default function FAQ() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const handleToggle = (index) => {
+    setOpenIndex((current) =>
+      current === index ? null : index
+    )
+  }
+
   return (
-    <section className="section py-24 sm:py-32">
+    <section
+      id="faq"
+      className="section faq-section py-24 sm:py-32 lg:py-40"
+    >
       <Reveal as="div">
-        <h2 className="font-display text-3xl sm:text-4xl mb-10">Questions</h2>
+        <div className="faq-heading">
+          <div>
+            <span className="faq-eyebrow">
+              06 / Frequently asked
+            </span>
+
+            <h2 className="faq-title">
+              A few things
+              <br />
+              <em>worth knowing.</em>
+            </h2>
+          </div>
+
+          <p className="faq-intro">
+            A little context about what I build, where I am right now,
+            and what I&apos;m looking for next.
+          </p>
+        </div>
       </Reveal>
+
       <Reveal as="div" delay={100}>
-        {FAQS.map((item) => (
-          <FAQItem key={item.q} {...item} />
-        ))}
+        <div className="faq-list">
+          {FAQS.map((item, index) => (
+            <FAQItem
+              key={item.number}
+              item={item}
+              open={openIndex === index}
+              onToggle={() => handleToggle(index)}
+            />
+          ))}
+        </div>
+      </Reveal>
+
+      <Reveal as="div" delay={220}>
+        <div className="faq-footer">
+          <span className="faq-footer__line" />
+
+          <span>
+            Still have a question?
+          </span>
+
+          <a
+            href="#contact"
+            data-cursor="link"
+            className="faq-footer__link"
+          >
+            Let&apos;s talk
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </Reveal>
     </section>
   )
