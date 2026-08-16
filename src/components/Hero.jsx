@@ -42,6 +42,7 @@ export default function Hero() {
         sm:pb-24
       "
     >
+
       {/* =====================================================
           BACKGROUND ATMOSPHERE
       ====================================================== */}
@@ -89,6 +90,7 @@ export default function Hero() {
       ====================================================== */}
 
       <div className="section relative">
+
         <div
           className="
             grid
@@ -98,11 +100,13 @@ export default function Hero() {
             lg:gap-4
           "
         >
+
           {/* =================================================
               LEFT CONTENT
           ================================================= */}
 
           <div className="relative z-20">
+
             <div
               className="mb-8 animate-fade-up"
               style={{ animationDelay: '0ms' }}
@@ -143,10 +147,6 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* =================================================
-                HERO DESCRIPTION
-            ================================================= */}
-
             <p
               className="
                 mt-8
@@ -160,14 +160,10 @@ export default function Hero() {
               "
               style={{ animationDelay: '190ms' }}
             >
-              Turning ideas, coursework and real-world experience
-              into working systems — and building a portfolio of
-              full-stack and frontend projects.
+              Turning coursework and side projects into real,
+              working systems — looking for an internship to do
+              that for real.
             </p>
-
-            {/* =================================================
-                ACTIONS
-            ================================================= */}
 
             <div
               className="
@@ -180,6 +176,7 @@ export default function Hero() {
               "
               style={{ animationDelay: '280ms' }}
             >
+
               <a
                 ref={workRef}
                 href="#work"
@@ -232,67 +229,12 @@ export default function Hero() {
                   will-change-transform
                 "
               >
-                Let&apos;s work together
+                Get in touch
               </a>
-            </div>
 
-            {/* =================================================
-                CURRENT STATUS
-            ================================================= */}
-
-            <div
-              className="
-                mt-7
-                flex
-                flex-wrap
-                items-center
-                gap-x-4
-                gap-y-2
-                animate-fade-up
-              "
-              style={{ animationDelay: '350ms' }}
-            >
-              <span
-                className="
-                  h-1.5
-                  w-1.5
-                  rounded-full
-                  bg-[#B89C98]
-                  shadow-[0_0_12px_rgba(184,156,152,0.65)]
-                "
-                aria-hidden="true"
-              />
-
-              <span
-                className="
-                  text-[10px]
-                  uppercase
-                  tracking-[0.22em]
-                  text-[#7F7974]
-                "
-              >
-                Open to opportunities
-              </span>
-
-              <span
-                className="text-[#5F5A56]"
-                aria-hidden="true"
-              >
-                ·
-              </span>
-
-              <span
-                className="
-                  text-[10px]
-                  uppercase
-                  tracking-[0.22em]
-                  text-[#7F7974]
-                "
-              >
-                BCA · 5th Semester
-              </span>
             </div>
           </div>
+
 
           {/* =================================================
               RIGHT — YUVRAJ
@@ -310,48 +252,25 @@ export default function Hero() {
               lg:min-h-[650px]
             "
           >
-            {/* Large ambient light */}
+
+            {/* =================================================
+                SOFT ANIMATED BACKLIGHT
+
+                No circle.
+                No ring.
+                No visible shape.
+
+                Just a broad diffused light source behind
+                the portrait.
+            ================================================= */}
 
             <div
               aria-hidden="true"
               className="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-1/2
-                h-[520px]
-                w-[520px]
-                -translate-x-1/2
-                -translate-y-1/2
-                rounded-full
-                blur-[130px]
+                hero-avatar-glow
               "
-              style={{
-                background:
-                  'radial-gradient(circle, rgba(205,197,188,0.10) 0%, rgba(184,156,152,0.045) 38%, transparent 72%)',
-              }}
             />
 
-            {/* Burgundy atmospheric light */}
-
-            <div
-              aria-hidden="true"
-              className="
-                pointer-events-none
-                absolute
-                bottom-[8%]
-                left-[50%]
-                h-[320px]
-                w-[360px]
-                -translate-x-1/2
-                rounded-full
-                blur-[110px]
-              "
-              style={{
-                background:
-                  'radial-gradient(circle, rgba(104,27,36,0.10) 0%, transparent 72%)',
-              }}
-            />
 
             {/* =================================================
                 AVATAR
@@ -368,12 +287,6 @@ export default function Hero() {
                 animate-[avatarFloat_7s_ease-in-out_infinite]
               "
             >
-              {/* Animated atmospheric halo behind avatar */}
-
-              <div
-                aria-hidden="true"
-                className="hero-avatar-glow"
-              />
 
               <img
                 src={yuvrajAvatar}
@@ -381,7 +294,6 @@ export default function Hero() {
                 draggable="false"
                 className="
                   relative
-                  z-10
                   block
                   w-full
                   select-none
@@ -395,7 +307,7 @@ export default function Hero() {
                 "
               />
 
-              {/* Soft light over avatar */}
+              {/* Very subtle light integration over the portrait */}
 
               <div
                 aria-hidden="true"
@@ -403,12 +315,13 @@ export default function Hero() {
                   pointer-events-none
                   absolute
                   inset-0
-                  z-20
-                  bg-[radial-gradient(ellipse_at_50%_38%,rgba(238,232,223,0.055),transparent_45%),radial-gradient(ellipse_at_55%_72%,rgba(104,27,36,0.07),transparent_62%)]
+                  bg-[radial-gradient(ellipse_at_50%_38%,rgba(238,232,223,0.035),transparent_45%),radial-gradient(ellipse_at_55%_72%,rgba(104,27,36,0.035),transparent_62%)]
                   mix-blend-screen
                 "
               />
+
             </div>
+
 
             {/* =================================================
                 FLOATING DETAILS
@@ -440,8 +353,11 @@ export default function Hero() {
                 bg-[#B8B0A8]/45
               "
             />
+
           </div>
+
         </div>
+
 
         {/* =====================================================
             BOTTOM META
@@ -456,6 +372,7 @@ export default function Hero() {
           "
           style={{ animationDelay: '380ms' }}
         >
+
           <div
             className="
               flex
@@ -466,6 +383,7 @@ export default function Hero() {
               sm:justify-between
             "
           >
+
             <p
               className="
                 text-[10px]
@@ -497,6 +415,7 @@ export default function Hero() {
               Scroll to explore
 
               <span
+                aria-hidden="true"
                 className="
                   transition-transform
                   duration-300
@@ -506,8 +425,11 @@ export default function Hero() {
                 ↓
               </span>
             </a>
+
           </div>
+
         </div>
+
 
         <div
           aria-hidden="true"
@@ -522,7 +444,9 @@ export default function Hero() {
             to-transparent
           "
         />
+
       </div>
+
 
       {/* =====================================================
           AVATAR FLOAT
@@ -546,6 +470,7 @@ export default function Hero() {
           }
         }
       `}</style>
+
     </section>
   )
 }
