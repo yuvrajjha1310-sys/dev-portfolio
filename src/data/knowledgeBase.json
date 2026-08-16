@@ -15,7 +15,7 @@
     "github": "github.com/yuvrajjha1310-sys"
   },
 
-  "summary": "Yuvraj Jha is a BCA student and developer based in New Delhi, India. He has a strong foundation in Java, C, Python, SQL, Data Structures and Algorithms, OOP, DBMS, Operating Systems, MySQL and web technologies. He has built multiple academic and practical software projects and has also completed a 2-month internship at Digital Tatsat. He is interested in software development, problem solving, analytical thinking and building practical systems.",
+  "summary": "Yuvraj Jha is a BCA student and developer based in New Delhi, India. He has a strong foundation in Java, C, Python, SQL, Data Structures and Algorithms, OOP, DBMS, Operating Systems, MySQL and web technologies. He has built multiple academic and practical software projects and has completed a 2-month internship at Digital Tatsat. He is currently looking for software development internship and job opportunities where he can contribute, learn and continue developing professionally.",
 
   "education": {
     "degree": "Bachelor of Computer Applications (BCA)",
@@ -30,9 +30,20 @@
       "company": "Digital Tatsat",
       "type": "Internship",
       "duration": "2 months",
-      "description": "Completed a 2-month internship at Digital Tatsat."
+      "status": "Completed",
+      "description": "Completed a 2-month internship at Digital Tatsat, gaining hands-on exposure to a professional working environment."
     }
   ],
+
+  "careerStatus": {
+    "currently": "BCA student in 5th semester",
+    "openTo": [
+      "Software Development Internships",
+      "Software Development Jobs",
+      "Entry-level Software Development Opportunities"
+    ],
+    "goal": "Continue growing as a software developer while contributing to real-world software projects."
+  },
 
   "skills": {
     "languages": [
@@ -169,5 +180,5 @@
     "Analysing technology and systems"
   ],
 
-  "careerObjective": "To pursue software development opportunities where Yuvraj can apply his programming and problem-solving skills, gain real-world experience and contribute to practical software projects."
+  "careerObjective": "To pursue software development internships and job opportunities where Yuvraj can apply his programming and problem-solving skills, contribute to practical software projects, learn from professional teams and continue growing as a software developer."
 }

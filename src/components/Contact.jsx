@@ -113,7 +113,6 @@ export default function Contact() {
 
         <Reveal as="div" delay={180}>
           <div className="contact-info-grid">
-
             <div className="contact-info-card">
               <span className="contact-info-card__number">
                 01
@@ -155,21 +154,6 @@ export default function Contact() {
                 <p>Internships · Job Opportunities</p>
               </div>
             </div>
-
-          </div>
-        </Reveal>
-
-        {/* =====================================================
-            EXPERIENCE NOTE
-        ====================================================== */}
-
-        <Reveal as="div" delay={210}>
-          <div className="contact-experience">
-            <span className="contact-experience__dot" />
-
-            <span>
-              2-month internship experience · Digital Tatsat
-            </span>
           </div>
         </Reveal>
 
@@ -179,18 +163,17 @@ export default function Contact() {
 
         <Reveal as="div" delay={240}>
           <div className="contact-socials">
-
             <span className="contact-socials__label">
               Find me elsewhere
             </span>
 
             <div className="contact-socials__links">
-
               <a
                 href="https://github.com/yuvrajjha1310-sys"
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="link"
+                aria-label="Open Yuvraj's GitHub profile"
               >
                 <span>GitHub</span>
                 <span aria-hidden="true">↗</span>
@@ -201,11 +184,11 @@ export default function Contact() {
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="link"
+                aria-label="Open Yuvraj's LinkedIn profile"
               >
                 <span>LinkedIn</span>
                 <span aria-hidden="true">↗</span>
               </a>
-
             </div>
           </div>
         </Reveal>
@@ -216,7 +199,6 @@ export default function Contact() {
 
         <Reveal as="div" delay={320}>
           <div className="contact-footer">
-
             <div className="contact-footer__meta">
               <span>
                 © {new Date().getFullYear()} Yuvraj Jha
@@ -251,7 +233,6 @@ export default function Contact() {
                 Back to top ↑
               </a>
             </div>
-
           </div>
         </Reveal>
       </div>

@@ -103,7 +103,6 @@ export default function Hero() {
           ================================================= */}
 
           <div className="relative z-20">
-
             <div
               className="mb-8 animate-fade-up"
               style={{ animationDelay: '0ms' }}
@@ -145,7 +144,7 @@ export default function Hero() {
             </h1>
 
             {/* =================================================
-                UPDATED HERO DESCRIPTION
+                HERO DESCRIPTION
             ================================================= */}
 
             <p
@@ -181,7 +180,6 @@ export default function Hero() {
               "
               style={{ animationDelay: '280ms' }}
             >
-
               <a
                 ref={workRef}
                 href="#work"
@@ -236,7 +234,6 @@ export default function Hero() {
               >
                 Let&apos;s work together
               </a>
-
             </div>
 
             {/* =================================================
@@ -278,9 +275,7 @@ export default function Hero() {
               </span>
 
               <span
-                className="
-                  text-[#5F5A56]
-                "
+                className="text-[#5F5A56]"
                 aria-hidden="true"
               >
                 ·
@@ -297,11 +292,10 @@ export default function Hero() {
                 BCA · 5th Semester
               </span>
             </div>
-
           </div>
 
           {/* =================================================
-              RIGHT — BLENDED YUVRAJ
+              RIGHT — YUVRAJ
           ================================================= */}
 
           <div
@@ -316,7 +310,6 @@ export default function Hero() {
               lg:min-h-[650px]
             "
           >
-
             {/* Large ambient light */}
 
             <div
@@ -375,6 +368,12 @@ export default function Hero() {
                 animate-[avatarFloat_7s_ease-in-out_infinite]
               "
             >
+              {/* Animated atmospheric halo behind avatar */}
+
+              <div
+                aria-hidden="true"
+                className="hero-avatar-glow"
+              />
 
               <img
                 src={yuvrajAvatar}
@@ -382,6 +381,7 @@ export default function Hero() {
                 draggable="false"
                 className="
                   relative
+                  z-10
                   block
                   w-full
                   select-none
@@ -403,11 +403,11 @@ export default function Hero() {
                   pointer-events-none
                   absolute
                   inset-0
+                  z-20
                   bg-[radial-gradient(ellipse_at_50%_38%,rgba(238,232,223,0.055),transparent_45%),radial-gradient(ellipse_at_55%_72%,rgba(104,27,36,0.07),transparent_62%)]
                   mix-blend-screen
                 "
               />
-
             </div>
 
             {/* =================================================
@@ -440,7 +440,6 @@ export default function Hero() {
                 bg-[#B8B0A8]/45
               "
             />
-
           </div>
         </div>
 
@@ -467,7 +466,6 @@ export default function Hero() {
               sm:justify-between
             "
           >
-
             <p
               className="
                 text-[10px]
@@ -508,7 +506,6 @@ export default function Hero() {
                 ↓
               </span>
             </a>
-
           </div>
         </div>
 
@@ -525,7 +522,6 @@ export default function Hero() {
             to-transparent
           "
         />
-
       </div>
 
       {/* =====================================================
@@ -550,7 +546,6 @@ export default function Hero() {
           }
         }
       `}</style>
-
     </section>
   )
 }
