@@ -189,6 +189,17 @@ export default function Contact() {
                 <span>LinkedIn</span>
                 <span aria-hidden="true">↗</span>
               </a>
+
+              <a
+                href="https://www.instagram.com/yuvwtf?igsh=ZnZsbmd2MmFsYmp2"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="link"
+                aria-label="Open Yuvraj's Instagram profile"
+              >
+                <span>Instagram</span>
+                <span aria-hidden="true">↗</span>
+              </a>
             </div>
           </div>
         </Reveal>
