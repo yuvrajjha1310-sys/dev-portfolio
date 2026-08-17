@@ -8,6 +8,12 @@ const EDUCATION = [
     period: '5th Semester',
     detail: 'Expected 2027',
   },
+  {
+    degree: 'Class X & XII',
+    org: 'Balvantray Mehta Vidya Bhawan (A.S.M.A)',
+    period: 'Greater Kailash',
+    detail: 'Completed',
+  },
 ]
 
 const DETAILS = [
